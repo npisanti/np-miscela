@@ -35,6 +35,8 @@ private:
     int mode;
     np::miscela::DotFrag  frag;
     np::miscela::Lua      lua;
+    ofImage         image;
+    ofVideoPlayer   video;
    
     bool loaded;
     

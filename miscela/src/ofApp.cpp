@@ -65,16 +65,11 @@ void ofApp::update(){
 
     if(resizeCounter>0){
         resizeCounter--;
-        if(resizeCounter==0){
-            bResize = true;
-            resizeCounter = -1;
-        }
     }
     
-    if( bResize ){
+    if( bResize && resizeCounter==0 ){
         combo.resize( ofGetWidth(), ofGetHeight() );
         bResize = false;
-        resizeCounter = -1;
     }
 
     mod = ofMap(analyzer.meter(), lowThreshold, highThreshold, 0.0f, 1.0f, true );
@@ -163,7 +158,8 @@ void ofApp::keyPressed(int key){
 }
 
 void ofApp::windowResized(int w, int h){
-    resizeCounter = 6;
+    resizeCounter = 8;
+    bResize = true;
 }
 
 void ofApp::xyControl( float x, float y, int button ){

@@ -51,6 +51,8 @@ void ofApp::setup(){
     gui.add( audioMap );
     gui.add( analyzer.parameters );
 
+    gui.add( saveFrames.set("save frames", 1, 1, 160 ) );
+
 	gui.minimizeAll(); 
     bDrawGui = false;
     
@@ -58,6 +60,9 @@ void ofApp::setup(){
     
     bResize=true;
     resizeCounter=0;
+    
+    bSave = false;
+    saveCounter = 0;
 }
 
 //--------------------------------------------------------------
@@ -95,13 +100,20 @@ void ofApp::update(){
         if( useCamTexture ){
             combo.fbo.begin();
                 ofSetColor( 255 );
-                //cam.draw( combo.fbo.getWidth(), 0, -combo.fbo.getWidth(), combo.fbo.getHeight() );
                 cam.draw( 0, 0 );
             combo.fbo.end();        
         }
     }
 
     combo.update();
+    
+    if( bSave ){
+        ofPixels pixels;
+        combo.fbo.readToPixels( pixels );
+        ofSaveImage(pixels, "frame"+ofToString(ofGetFrameNum())+".png" );
+        saveCounter--;
+        if(saveCounter==0) bSave = false;
+    }
 }
 
 //--------------------------------------------------------------
@@ -150,9 +162,8 @@ void ofApp::keyPressed(int key){
         case 'r': bResize=true; break;
         
         case 's':   
-            ofPixels pixels;
-            combo.fbo.readToPixels( pixels );
-            ofSaveImage(pixels, "frame"+ofToString(ofGetFrameNum())+".png" );
+            bSave = true;
+            saveCounter = saveFrames;
         break;
     }
 }

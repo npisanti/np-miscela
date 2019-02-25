@@ -59,4 +59,7 @@ class ofApp : public ofBaseApp{
             ofParameter<float> audioMeter;
             ofParameter<float> modMeter;
             
+        bool                bSave;
+        ofParameter<int>    saveFrames;
+        int                 saveCounter;
 };

@@ -55,16 +55,27 @@ void ofApp::setup(){
     bDrawGui = false;
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
+    
+    bResize=true;
+    resizeCounter=0;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
+    if(resizeCounter>0){
+        resizeCounter--;
+        if(resizeCounter==0){
+            bResize = true;
+            resizeCounter = -1;
+        }
+    }
     
     if( bResize ){
         combo.resize( ofGetWidth(), ofGetHeight() );
         bResize = false;
+        resizeCounter = -1;
     }
-
 
     mod = ofMap(analyzer.meter(), lowThreshold, highThreshold, 0.0f, 1.0f, true );
     
@@ -141,6 +152,8 @@ void ofApp::keyPressed(int key){
         case '1': openCam( 1 ); break;
         case '2': openCam( 2 ); break;
         
+        case 'r': bResize=true; break;
+        
         case 's':   
             ofPixels pixels;
             combo.fbo.readToPixels( pixels );
@@ -150,7 +163,7 @@ void ofApp::keyPressed(int key){
 }
 
 void ofApp::windowResized(int w, int h){
-    bResize = true;
+    resizeCounter = 6;
 }
 
 void ofApp::xyControl( float x, float y, int button ){

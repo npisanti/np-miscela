@@ -36,6 +36,7 @@ class ofApp : public ofBaseApp{
         float mod;
         glm::vec3 position;
         bool bResize;
+        int resizeCounter;
 
         bool		bDrawGui;
         ofxPanel 	gui;

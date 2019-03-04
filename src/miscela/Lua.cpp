@@ -112,12 +112,16 @@ void np::miscela::Lua::update(){
     mg::setColorA( colorA.get().r, colorA.get().g, colorA.get().b );
     mg::setColorB( colorB.get().r, colorB.get().g, colorB.get().b );
     lfo::setPlayHead( clock );
+    
+    ofPushStyle();
+    ofDisableAlphaBlending();
     fbo.begin(); 
         mg::beginFrame( fbo.getWidth(), fbo.getHeight() );
         lua.scriptUpdate();
         lua.scriptDraw();
         mg::endFrame();
     fbo.end();
+    ofPopStyle();
 }    
 
 void np::miscela::Lua::draw(){

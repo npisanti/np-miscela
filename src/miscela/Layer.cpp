@@ -44,6 +44,7 @@ void np::miscela::Layer::load( std::string path ){
 
 void np::miscela::Layer::render( ofFbo & fbo ){
     if( loaded ){
+        
         switch( mode ){
             case 0: // shader
                 frag.apply( fbo );
@@ -53,10 +54,13 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 lua.setBoundaries( ofRectangle( 0, 0, fbo.getWidth(), fbo.getHeight()) );
                 
                 lua.update();
-                
+                    
+                ofPushStyle();
+                ofDisableAlphaBlending();
                 fbo.begin();
                     lua.draw();
                 fbo.end();
+                ofPopStyle();
             break;
             
             case 2: // image
@@ -65,9 +69,13 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 ofRectangle fborect( 0, 0, fbo.getWidth(), fbo.getHeight() );
                 ofRectangle imgrect( 0, 0, image.getWidth(), image.getHeight() );
                 imgrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
+                
+                ofPushStyle();
+                ofDisableAlphaBlending();
                 fbo.begin();
                     image.draw( imgrect.x, imgrect.y, imgrect.width, imgrect.height );
                 fbo.end();
+                ofPopStyle();
             }
             break;
             
@@ -79,16 +87,20 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 vidrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
 
                 video.update();
-
+                
+                ofPushStyle();
+                ofDisableAlphaBlending();
                 fbo.begin();
                     ofSetColor(255);
                     video.draw( vidrect.x, vidrect.y, vidrect.width, vidrect.height  );
                 fbo.end();
+                ofPopStyle();
             }
             break;
             
             default: break;
         }
+        
     }
 }
     

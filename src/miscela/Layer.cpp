@@ -56,7 +56,7 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 lua.update();
                     
                 ofPushStyle();
-                ofDisableAlphaBlending();
+                //ofDisableAlphaBlending();
                 fbo.begin();
                     lua.draw();
                 fbo.end();

@@ -53,7 +53,8 @@ void ofApp::setup(){
 
     gui.add( saveFrames.set("save frames", 1, 1, 160 ) );
 
-	gui.minimizeAll(); 
+	gui.minimizeAll();
+    gui.loadFromFile( "settings.xml" ); 
     bDrawGui = false;
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );

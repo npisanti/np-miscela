@@ -49,7 +49,7 @@ class ofApp : public ofBaseApp{
         
         ofParameter<bool>   useCamTexture;
         void                onUseCamTexture( bool & value );        
-        void                openCam( int index );
+        void                openCam( int index, int w, int h );
         ofVideoGrabber      cam;        
         
         np::Analyzer analyzer;

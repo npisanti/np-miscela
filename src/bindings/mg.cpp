@@ -65,7 +65,7 @@ namespace mg {
         nvgScale( _vg, height, -height );
         nvgTranslate( _vg, 0.0, -1.0 );
         bFill = 0;
-        nvgStrokeWidth( _vg, 20 );
+        nvgStrokeWidth( _vg, 0.05 );
         
         // change blending for nvg alpha
         //nvgGlobalCompositeBlendFunc( _vg, NVG_SRC_ALPHA, NVG__DST_ALPHA);   
@@ -99,9 +99,9 @@ namespace mg {
         ofClear( 0, 0, 0, 0 );
     }
     
-    void fade( int speed ){
+    void fade( double speed ){
         ofPushStyle();
-            ofSetColor( 0, 0, 0, speed );
+            ofSetColor( 0, 0, 0, speed*speed*255 );
             ofFill();
             ofDrawRectangle( 0, 0, w, h );
         ofPopStyle();

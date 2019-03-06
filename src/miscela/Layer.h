@@ -23,7 +23,7 @@ public:
     void setModulation( float value );
     
     bool isFragment(){ return mode==0; }
-    bool requiresClear(){ return mode<2; }
+    bool requiresClear(){ return mode==0; }
     
     void draw( int x, int y );
     

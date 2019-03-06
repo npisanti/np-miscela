@@ -10,7 +10,7 @@ namespace mg {
     void size( int w, int h );
     void clear();
     void background( double r, double g, double b, double a );
-    void fade( int speed );
+    void fade( double speed );
 
     void stroke( double r, double g, double b, double a );
     void strokeA();

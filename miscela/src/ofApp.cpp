@@ -89,21 +89,40 @@ void ofApp::update(){
     combo.setSpeed( speed );
     combo.setPosition( position );
     
-    if( combo.layers[0].requiresClear() ){
+    if(combo.getRequiredWebcam()!=-1){
+        if( ! cam.isInitialized() ){ 
+            openCam( combo.getRequiredWebcam(), combo.getWebcamWidth(), combo.getWebcamHeight() );
+        }
+        if( cam.isInitialized() ){ cam.update(); }
+        
         combo.fbo.begin();
             ofClear( 0, 0, 0, 0 );
-        combo.fbo.end();  
-    }
-    
-    if( cam.isInitialized() ){ cam.update(); }
-
-    if(combo.layers[0].isFragment()){
-        if( useCamTexture ){
-            combo.fbo.begin();
-                ofSetColor( 255 );
-                cam.draw( 0, 0 );
-            combo.fbo.end();        
-        }
+            ofSetColor( 255 );
+            
+            switch( combo.getWebcamMode() ){
+                case 0:
+                    cam.draw( 0, 0, combo.fbo.getWidth(), combo.fbo.getHeight() );
+                break;
+                
+                case 1:
+                {
+                    float mult =  float(combo.fbo.getWidth()) / float(cam.getWidth());
+                    float h = cam.getHeight() * mult;
+                    float y = (combo.fbo.getHeight()-h)*0.5;
+                    cam.draw( 0, y, combo.fbo.getWidth(), h );
+                }
+                break;
+                
+                case 2:
+                {
+                    float mult =  float(combo.fbo.getHeight()) / float(cam.getHeight());
+                    float w = cam.getWidth() * mult;
+                    float x = (combo.fbo.getWidth()-w)*0.5;
+                    cam.draw( x, 0, w, combo.fbo.getHeight() );
+                }
+                break;
+            }
+        combo.fbo.end();            
     }
 
     combo.update();
@@ -142,11 +161,11 @@ void ofApp::exit(){
 }
 
 //--------------------------------------------------------------
-void ofApp::openCam( int index ){
+void ofApp::openCam( int index, int w, int h ){
     cam.setDeviceID( index );
     cam.setDesiredFrameRate(60);
     switch( index ){
-        default: cam.initGrabber(640, 480); break;
+        default: cam.initGrabber(w, h); break;
     }
     useCamTexture = true;
 }
@@ -160,9 +179,6 @@ void ofApp::onUseCamTexture( bool & value ){
 void ofApp::keyPressed(int key){
 	switch(key){
 		case 'g': bDrawGui = !bDrawGui; break;
-        case '0': openCam( 0 ); break;
-        case '1': openCam( 1 ); break;
-        case '2': openCam( 2 ); break;
         
         case 'r': bResize=true; break;
         

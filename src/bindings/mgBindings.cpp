@@ -2711,9 +2711,9 @@ static int _wrap_background(lua_State* L) { int SWIG_arg = 0; double arg1 ; doub
   if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::background",4,"double"); arg1 = (double)lua_tonumber(L, 1);
   arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
   mg::background(arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_fade(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::fade",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fade",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::fade(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_fade(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::fade",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fade",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::fade(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_stroke__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
   SWIG_check_num_args("mg::stroke",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"double");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::stroke",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::stroke",3,"double");

@@ -17,12 +17,10 @@ public:
     Lua();
     ~Lua();
 
-    void allocate( int width, int height );    
     void load( std::string path );
     
-    void draw();
-    void update();
-    
+    void draw( ofFbo & fbo );
+
     void playhead( float clock ){ this->clock = clock; }
 
     ofParameterGroup parameters;
@@ -42,8 +40,6 @@ private:
     bool reload(ofFile &file) override;
     float clock;
     float before;
-    
-    ofFbo fbo;
 
     static int constructed;
     

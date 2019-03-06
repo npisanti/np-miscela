@@ -10,8 +10,7 @@ namespace np{ namespace miscela {
 class Layer{
 public:
     Layer();
-    
-    void resize( int width, int height );
+
     void load( std::string path );
 
     void render( ofFbo & fbo );

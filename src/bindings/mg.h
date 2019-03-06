@@ -9,22 +9,26 @@ namespace mg {
 
     void size( int w, int h );
     void clear();
-    void background( int r, int g, int b, int a );
+    void background( double r, double g, double b, double a );
     void fade( int speed );
 
-    void stroke( int r, int g, int b, int a );
-    void strokeA( int alpha=255 );
-    void strokeB( int alpha=255 );
-    void stroke( int white );
-    void stroke( int white, int alpha );
+    void stroke( double r, double g, double b, double a );
+    void strokeA();
+    void strokeB();
+    void strokeA( double alpha );
+    void strokeB( double alpha );
+    void stroke( double white );
+    void stroke( double white, double alpha );
     void stroke();
     
-    void fill( int r, int g, int b, int a );
+    void fill( double r, double g, double b, double a );
     void fill();
-    void fillA( int alpha=255 );
-    void fillB( int alpha=255 );
-    void fill( int white );
-    void fill( int white, int alpha );
+    void fillA();
+    void fillB();
+    void fillA( double alpha );
+    void fillB( double alpha );
+    void fill( double white );
+    void fill( double white, double alpha );
     
     void holes();
     
@@ -39,7 +43,8 @@ namespace mg {
     void setJoinBevel();
     
     void circle( double x, double y, double radius );
-	void arc( double cx, double cy, double r, double a0, double a1, int dir=1);
+	void arc( double cx, double cy, double r, double a0, double a1 );
+	void arc( double cx, double cy, double r, double a0, double a1, int dir );
 	void rect( double x, double y, double w, double h );
     void rect( double x, double y, double w, double h, double r );
 	void ellipse( double cx, double cy, double rx, double ry );

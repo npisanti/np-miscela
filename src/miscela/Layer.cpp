@@ -8,12 +8,6 @@ np::miscela::Layer::Layer(){
     height = 0;
 }
 
-void np::miscela::Layer::resize( int width, int height ){
-    this->width = width;
-    this->height = height;
-    lua.allocate( width, height );
-}
-
 void np::miscela::Layer::load( std::string path ){
     std::string ext = ofFilePath::getFileExt( path );
     
@@ -51,16 +45,7 @@ void np::miscela::Layer::render( ofFbo & fbo ){
             break;
             
             case 1: // lua
-                lua.setBoundaries( ofRectangle( 0, 0, fbo.getWidth(), fbo.getHeight()) );
-                
-                lua.update();
-                    
-                ofPushStyle();
-                //ofDisableAlphaBlending();
-                fbo.begin();
-                    lua.draw();
-                fbo.end();
-                ofPopStyle();
+                lua.draw( fbo );
             break;
             
             case 2: // image

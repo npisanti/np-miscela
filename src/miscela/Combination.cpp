@@ -2,28 +2,39 @@
 #include "Combination.h"
 
 void np::miscela::Combination::setup( int w, int h, int multisampling ){
+    
+    ofFboSettings settings;
+    settings.width = w;
+    settings.height = h;
+    settings.numSamples = 0;
+    settings.useStencil = true;
+    settings.numSamples = multisampling;
+    fbo.allocate( settings );
+  
     this->multisampling = multisampling;
-    fbo.allocate( w, h, GL_RGBA, multisampling );
+    
     clear();
 }
 
 void np::miscela::Combination::clear(){
     fbo.begin();
-        ofClear( 0, 0, 0, 0 );
+        ofClear( 0, 0, 0, 255 );
     fbo.end();
 }
 
 void np::miscela::Combination::add( std::string path ){
     layers.emplace_back();
     layers.back().load( path );
-    layers.back().resize( fbo.getWidth(), fbo.getHeight() );
-    
+
     if(fbo.getWidth()==0 || fbo.getHeight()==0){
         ofLogError() << "[np::miscela::Combination] added script without calling setup() first, undefined behavior\n";
     }
 }
 
 void np::miscela::Combination::update(){
+    fbo.begin();
+        ofClear( 0, 0, 0, 0 );
+    fbo.end();
     for( size_t i=0; i<layers.size(); ++i ){
         layers[i].render( fbo );
     }
@@ -31,9 +42,6 @@ void np::miscela::Combination::update(){
 
 void np::miscela::Combination::resize( int w, int h ){
     fbo.allocate( w, h, GL_RGBA, multisampling );
-    for( auto & layer : layers ){
-        layer.resize( fbo.getWidth(), fbo.getHeight() );
-    }
 }
     
 void np::miscela::Combination::setControl( float value ){

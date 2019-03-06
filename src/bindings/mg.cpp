@@ -62,9 +62,14 @@ namespace mg {
         aspect = double(width)/double(height);
         // reset defaults
         nvgReset( _vg );
-        nvgScale( _vg, height, height );
+        nvgScale( _vg, height, -height );
+        nvgTranslate( _vg, 0.0, -1.0 );
         bFill = 0;
         nvgStrokeWidth( _vg, 20 );
+        
+        // change blending for nvg alpha
+        //nvgGlobalCompositeBlendFunc( _vg, NVG_SRC_ALPHA, NVG__DST_ALPHA);   
+        //nvgGlobalCompositeOperation( _vg, NVG_SOURCE_OVER );
     }
 
     void endFrame(){
@@ -86,8 +91,8 @@ namespace mg {
     void size( int w, int h ){
         ofSetWindowShape( w, h );
     }
-    void background( int r, int g, int b, int a ){
-        ofClear( r, g, b, a );
+    void background( double r, double g, double b, double a ){
+        ofClear( r*255.0, g*255.0, b*255.0, a*255.0 );
     }
 
     void clear(){
@@ -102,28 +107,40 @@ namespace mg {
         ofPopStyle();
     }
 
-    void stroke( int r, int g, int b, int a ){
-        sColor = nvgRGBA(r,g,b,a);
+    void stroke( double r, double g, double b, double a ){
+        sColor = nvgRGBA( r*255.0, g*255.0, b*255.0, a*255.0 );
         bFill = 0;
     }
     
-    void stroke( int white, int alpha ){
-        sColor = nvgRGBA( white, white, white, alpha );
+    void stroke( double white, double alpha ){
+        int w = white * 255.0;
+        sColor = nvgRGBA( w, w, w, alpha*255 );
         bFill = 0;
     }
     
-    void stroke( int white ){
-        sColor = nvgRGBA( white, white, white, 255 );
+    void stroke( double white ){
+        int w = white * 255.0;
+        sColor = nvgRGBA( w, w, w, 255 );
         bFill = 0;
     }
         
-    void strokeA( int alpha ){
-        sColor = nvgRGBA( ar, ag, ab, alpha);
+    void strokeA( double alpha ){
+        sColor = nvgRGBA( ar, ag, ab, alpha*255.0 );
         bFill = 0;
     }    
     
-    void strokeB( int alpha ){
-        sColor = nvgRGBA( br, bg, bb, alpha);
+    void strokeB( double alpha ){
+        sColor = nvgRGBA( br, bg, bb, alpha*255.0 );
+        bFill = 0;
+    }    
+        
+    void strokeA(){
+        sColor = nvgRGBA( ar, ag, ab, 255 );
+        bFill = 0;
+    }    
+    
+    void strokeB(){
+        sColor = nvgRGBA( br, bg, bb, 255);
         bFill = 0;
     }    
         
@@ -132,28 +149,40 @@ namespace mg {
         bFill = 0;
     }
     
-    void fill( int r, int g, int b, int a ){
-        fColor = nvgRGBA(r,g,b,a);
+    void fill( double r, double g, double b, double a ){
+        fColor = nvgRGBA( r*255.0, g*255.0, b*255.0, a*255.0 );
         bFill = 1;
     }
     
-    void fill( int white, int alpha ){
-        fColor = nvgRGBA( white, white, white, alpha );
+    void fill( double white, double alpha ){
+        int w = white * 255.0;
+        fColor = nvgRGBA( w, w, w, alpha*255.0 );
         bFill = 1;
     }
     
-    void fill( int white ){
-        fColor = nvgRGBA( white, white, white, 255 );
+    void fill( double white ){
+        int w = white * 255.0;
+        fColor = nvgRGBA( w, w, w, 255 );
         bFill = 1;
     }
         
-    void fillA( int alpha ){
-        fColor = nvgRGBA( ar, ag, ab, alpha);
+    void fillA( double alpha ){
+        fColor = nvgRGBA( ar, ag, ab, alpha*255.0 );
         bFill = 1;
     }    
     
-    void fillB( int alpha ){
-        fColor = nvgRGBA( br, bg, bb, alpha);
+    void fillB( double alpha ){
+        fColor = nvgRGBA( br, bg, bb, alpha*255.0 );
+        bFill = 1;
+    }    
+    
+    void fillA(){
+        fColor = nvgRGBA( ar, ag, ab, 255);
+        bFill = 1;
+    }    
+    
+    void fillB(){
+        fColor = nvgRGBA( br, bg, bb, 255);
         bFill = 1;
     }    
     
@@ -194,6 +223,10 @@ namespace mg {
     
 	void arc( double cx, double cy, double r, double a0, double a1, int dir){
         nvgArc(_vg, cx, cy, r, a0, a1, dir);
+    }
+    
+	void arc( double cx, double cy, double r, double a0, double a1){
+        nvgArc(_vg, cx, cy, r, a0, a1, 1);
     }
     
 	void rect( double x, double y, double w, double h ){

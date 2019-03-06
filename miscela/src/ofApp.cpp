@@ -120,10 +120,13 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0);
-    ofEnableAlphaBlending();
 
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
     combo.draw( 0, 0 );
     
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+
     if( bDrawGui ){ 
         audioMeter = analyzer.meter();
         modMeter = mod;

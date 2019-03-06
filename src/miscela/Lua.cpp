@@ -49,29 +49,6 @@ np::miscela::Lua::~Lua(){
     }
 }
 
-
-void np::miscela::Lua::allocate( int width, int height ){
-    ofFboSettings settings;
-    settings.width = width;
-    settings.height = height;
-    settings.numSamples = 0;
-    settings.useStencil = true;
-    fbo.allocate( settings );
-    
-    fbo.begin();
-        ofClear( 0, 0, 0, 0 );
-    fbo.end();
-    
-    // this is a fix for a common openFrameworks problem 
-    fbo.getTexture().getTextureData().bFlipTexture = true;    
-    
-    boundaries.width = width;
-    boundaries.height = height;
-    aspect = float( width ) / float( height );
-}
-
-
-
 void np::miscela::Lua::load( std::string path ){
     this->path = path;
     filename = ofFilePath::getFileName( path ); 
@@ -95,14 +72,17 @@ bool np::miscela::Lua::reload( ofFile &file ){
     return true;
 }
     
-void np::miscela::Lua::update(){
+void np::miscela::Lua::draw( ofFbo & fbo ){
+    
+    aspect = float( fbo.getWidth() ) / float( fbo.getHeight() );
+    
     float now = ofGetElapsedTimef();
     clock += (now-before) * (speed*speed*speed);
     before = now;
     
     lua.setNumber( "time", (lua_Number) clock );
-    lua.setNumber( "width", (lua_Number) boundaries.width );
-    lua.setNumber( "height", (lua_Number) boundaries.height );
+    lua.setNumber( "width", (lua_Number) fbo.getWidth() );
+    lua.setNumber( "height", (lua_Number) fbo.getHeight() );
     lua.setNumber( "control", (lua_Number) control );
     lua.setNumber( "modulation", (lua_Number) modulation );
     lua.setNumber( "position_x", (lua_Number) position.get().x * aspect );
@@ -113,19 +93,15 @@ void np::miscela::Lua::update(){
     mg::setColorB( colorB.get().r, colorB.get().g, colorB.get().b );
     lfo::setPlayHead( clock );
     
-    ofPushStyle();
-    ofDisableAlphaBlending();
-    fbo.begin(); 
+    
+    fbo.begin();
+        ofSetColor(255);
         mg::beginFrame( fbo.getWidth(), fbo.getHeight() );
         lua.scriptUpdate();
         lua.scriptDraw();
         mg::endFrame();
     fbo.end();
-    ofPopStyle();
-}    
 
-void np::miscela::Lua::draw(){
-    fbo.draw( boundaries.x, boundaries.y );
 }
 
 void np::miscela::Lua::errorReceived(std::string& msg) {

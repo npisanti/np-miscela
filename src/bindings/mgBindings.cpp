@@ -2704,93 +2704,95 @@ static int _wrap_size(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SW
   lua_error(L); return SWIG_arg; }
 static int _wrap_clear(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::clear",0,0) mg::clear(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_background(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
-  SWIG_check_num_args("mg::background",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::background",1,"int");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::background",2,"int");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::background",3,"int");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::background",4,"int"); arg1 = (int)lua_tonumber(L, 1);
-  arg2 = (int)lua_tonumber(L, 2); arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4);
+static int _wrap_background(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
+  SWIG_check_num_args("mg::background",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::background",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::background",2,"double");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::background",3,"double");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::background",4,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
   mg::background(arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_fade(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::fade",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fade",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::fade(arg1); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_stroke__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
-  SWIG_check_num_args("mg::stroke",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"int");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::stroke",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::stroke",3,"int");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::stroke",4,"int"); arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2);
-  arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4); mg::stroke(arg1,arg2,arg3,arg4); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_strokeA__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::strokeA",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::strokeA",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::strokeA(arg1);
+static int _wrap_stroke__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
+  SWIG_check_num_args("mg::stroke",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::stroke",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::stroke",3,"double");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::stroke",4,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
+  mg::stroke(arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_strokeA__SWIG_0(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::strokeA",0,0) mg::strokeA();
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_strokeA__SWIG_1(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::strokeA",0,0) mg::strokeA();
+static int _wrap_strokeB__SWIG_0(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::strokeB",0,0) mg::strokeB();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_strokeA__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::strokeA",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::strokeA",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::strokeA(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_strokeA(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_strokeA__SWIG_1(L);}  if (argc == 1) { return _wrap_strokeA__SWIG_0(L);} 
+    return _wrap_strokeA__SWIG_0(L);}  if (argc == 1) { return _wrap_strokeA__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'strokeA'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::strokeA(int)\n" "    mg::strokeA()\n"); lua_error(L);return 0; }
-static int _wrap_strokeB__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::strokeB",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::strokeB",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::strokeB(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_strokeB__SWIG_1(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::strokeB",0,0) mg::strokeB();
+  "    mg::strokeA()\n" "    mg::strokeA(double)\n"); lua_error(L);return 0; }
+static int _wrap_strokeB__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::strokeB",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::strokeB",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::strokeB(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_strokeB(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_strokeB__SWIG_1(L);}  if (argc == 1) { return _wrap_strokeB__SWIG_0(L);} 
+    return _wrap_strokeB__SWIG_0(L);}  if (argc == 1) { return _wrap_strokeB__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'strokeB'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::strokeB(int)\n" "    mg::strokeB()\n"); lua_error(L);return 0; }
-static int _wrap_stroke__SWIG_1(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::stroke",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::stroke(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_stroke__SWIG_2(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("mg::stroke",2,2)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::stroke",2,"int");
-  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); mg::stroke(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
+  "    mg::strokeB()\n" "    mg::strokeB(double)\n"); lua_error(L);return 0; }
+static int _wrap_stroke__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::stroke",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::stroke(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_stroke__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ;
+  SWIG_check_num_args("mg::stroke",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::stroke",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::stroke",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); mg::stroke(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
 static int _wrap_stroke__SWIG_3(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::stroke",0,0) mg::stroke();
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_stroke(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 0) {
     return _wrap_stroke__SWIG_3(L);}  if (argc == 1) { return _wrap_stroke__SWIG_1(L);}  if (argc == 2) {
     return _wrap_stroke__SWIG_2(L);}  if (argc == 4) { return _wrap_stroke__SWIG_0(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'stroke'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::stroke(int,int,int,int)\n" "    mg::stroke(int)\n" "    mg::stroke(int,int)\n" "    mg::stroke()\n");
-  lua_error(L);return 0; }
-static int _wrap_fill__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; int arg3 ; int arg4 ;
-  SWIG_check_num_args("mg::fill",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"int");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::fill",2,"int"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::fill",3,"int");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::fill",4,"int"); arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2);
-  arg3 = (int)lua_tonumber(L, 3); arg4 = (int)lua_tonumber(L, 4); mg::fill(arg1,arg2,arg3,arg4); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+  "    mg::stroke(double,double,double,double)\n" "    mg::stroke(double)\n" "    mg::stroke(double,double)\n"
+  "    mg::stroke()\n"); lua_error(L);return 0; }
+static int _wrap_fill__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
+  SWIG_check_num_args("mg::fill",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::fill",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::fill",3,"double");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::fill",4,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
+  mg::fill(arg1,arg2,arg3,arg4); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_fill__SWIG_1(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::fill",0,0) mg::fill(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_fillA__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::fillA",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fillA",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::fillA(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_fillA__SWIG_1(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::fillA",0,0) mg::fillA();
+static int _wrap_fillA__SWIG_0(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::fillA",0,0) mg::fillA();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_fillB__SWIG_0(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::fillB",0,0) mg::fillB();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_fillA__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::fillA",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fillA",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::fillA(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_fillA(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_fillA__SWIG_1(L);}  if (argc == 1) { return _wrap_fillA__SWIG_0(L);} 
+    return _wrap_fillA__SWIG_0(L);}  if (argc == 1) { return _wrap_fillA__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'fillA'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::fillA(int)\n" "    mg::fillA()\n"); lua_error(L);return 0; }
-static int _wrap_fillB__SWIG_0(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::fillB",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fillB",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::fillB(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_fillB__SWIG_1(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::fillB",0,0) mg::fillB();
+  "    mg::fillA()\n" "    mg::fillA(double)\n"); lua_error(L);return 0; }
+static int _wrap_fillB__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::fillB",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fillB",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::fillB(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_fillB(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
-    return _wrap_fillB__SWIG_1(L);}  if (argc == 1) { return _wrap_fillB__SWIG_0(L);} 
+    return _wrap_fillB__SWIG_0(L);}  if (argc == 1) { return _wrap_fillB__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'fillB'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::fillB(int)\n" "    mg::fillB()\n"); lua_error(L);return 0; }
-static int _wrap_fill__SWIG_2(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::fill",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::fill(arg1); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_fill__SWIG_3(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SWIG_check_num_args("mg::fill",2,2)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::fill",2,"int");
-  arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); mg::fill(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
+  "    mg::fillB()\n" "    mg::fillB(double)\n"); lua_error(L);return 0; }
+static int _wrap_fill__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::fill",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"double"); arg1 = (double)lua_tonumber(L, 1); mg::fill(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_fill__SWIG_3(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; SWIG_check_num_args("mg::fill",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::fill",1,"double"); if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::fill",2,"double");
+  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); mg::fill(arg1,arg2); return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
 static int _wrap_fill(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 0) {
     return _wrap_fill__SWIG_1(L);}  if (argc == 1) { return _wrap_fill__SWIG_2(L);}  if (argc == 2) {
     return _wrap_fill__SWIG_3(L);}  if (argc == 4) { return _wrap_fill__SWIG_0(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'fill'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::fill(int,int,int,int)\n" "    mg::fill()\n" "    mg::fill(int)\n" "    mg::fill(int,int)\n"); lua_error(L);return 0; }
+  "    mg::fill(double,double,double,double)\n" "    mg::fill()\n" "    mg::fill(double)\n" "    mg::fill(double,double)\n");
+  lua_error(L);return 0; }
 static int _wrap_holes(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::holes",0,0) mg::holes(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_strokeWidth(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("mg::strokeWidth",1,1)
@@ -2814,6 +2816,13 @@ static int _wrap_circle(lua_State* L) { int SWIG_arg = 0; double arg1 ; double a
   arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
   mg::circle(arg1,arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_arc__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
+  double arg5 ; SWIG_check_num_args("mg::arc",5,5) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::arc",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::arc",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::arc",3,"double");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::arc",4,"double"); if(!lua_isnumber(L,5)) SWIG_fail_arg("mg::arc",5,"double");
+  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
+  arg4 = (double)lua_tonumber(L, 4); arg5 = (double)lua_tonumber(L, 5); mg::arc(arg1,arg2,arg3,arg4,arg5); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_arc__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
   double arg5 ; int arg6 ; SWIG_check_num_args("mg::arc",6,6) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::arc",1,"double");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::arc",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::arc",3,"double");
   if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::arc",4,"double"); if(!lua_isnumber(L,5)) SWIG_fail_arg("mg::arc",5,"double");
@@ -2821,17 +2830,10 @@ static int _wrap_arc__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; dou
   arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4); arg5 = (double)lua_tonumber(L, 5);
   arg6 = (int)lua_tonumber(L, 6); mg::arc(arg1,arg2,arg3,arg4,arg5,arg6); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
-static int _wrap_arc__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
-  double arg5 ; SWIG_check_num_args("mg::arc",5,5) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::arc",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::arc",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::arc",3,"double");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::arc",4,"double"); if(!lua_isnumber(L,5)) SWIG_fail_arg("mg::arc",5,"double");
-  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
-  arg4 = (double)lua_tonumber(L, 4); arg5 = (double)lua_tonumber(L, 5); mg::arc(arg1,arg2,arg3,arg4,arg5); return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_arc(lua_State* L) { int argc; int argv[7]={ 1,2,3,4,5,6,7} ; argc = lua_gettop(L); if (argc == 5) {
-    return _wrap_arc__SWIG_1(L);}  if (argc == 6) { return _wrap_arc__SWIG_0(L);} 
+    return _wrap_arc__SWIG_0(L);}  if (argc == 6) { return _wrap_arc__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'arc'\n" "  Possible C/C++ prototypes are:\n"
-  "    mg::arc(double,double,double,double,double,int)\n" "    mg::arc(double,double,double,double,double)\n");
+  "    mg::arc(double,double,double,double,double)\n" "    mg::arc(double,double,double,double,double,int)\n");
   lua_error(L);return 0; }
 static int _wrap_rect__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
   SWIG_check_num_args("mg::rect",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::rect",1,"double");

@@ -20,10 +20,6 @@ public:
         uniform( modulation.set("modulation", 0.0f, 0.0f, 1.0f), "u_modulation" );
     }
     
-    void draw(){
-        ofx::dotfrag::Base::draw( boundaries.x, boundaries.y, boundaries.width, boundaries.height );
-    }
-    
 };
     
 }}

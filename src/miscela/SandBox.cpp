@@ -9,20 +9,3 @@ np::miscela::SandBox::SandBox(){
     
     modulation = 0.0f;
 }
-
-
-void np::miscela::SandBox::setBoundaries( const ofRectangle & box ){
-    boundaries = box;
-    onResize( boundaries.width, boundaries.height );
-}
-
-void np::miscela::SandBox::move( float x, float y ){
-    boundaries.x = x;
-    boundaries.y = y;
-}
-
-void np::miscela::SandBox::resize( float w, float h ){
-    boundaries.width = w;
-    boundaries.height = w;    
-    onResize( boundaries.width, boundaries.height );
-}

@@ -12,6 +12,7 @@ class DotFrag : public ofx::dotfrag::Live, public SandBox {
 public:
     DotFrag(){
         timewarp();
+        pingpong();
         uniform( control, "u_control" );
         uniform( position, "u_position" );
         uniform( colorA, "u_color_a" );

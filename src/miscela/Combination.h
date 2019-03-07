@@ -3,11 +3,10 @@
 
 #include "ofMain.h"
 #include "Layer.h"
-#include "ofxWatchFile.h"
 
 namespace np{ namespace miscela {
 
-class Combination : public ofxWatchFile {
+class Combination : public FileWatcher {
 
 public:
     void setup( int w, int h, int multisampling=0 );
@@ -36,10 +35,11 @@ public:
     int getWebcamMode(){ return webcamMode; };
     
 private:
+
     int multisampling;
-    
-    std::string configpath;
-    
+
+    bool bConfigAutoload;   
+     
     ofParameterGroup config;
         ofParameterGroup webcam;
             ofParameter<int> webcamW;
@@ -50,7 +50,7 @@ private:
             ofParameter<int> cWidth;
             ofParameter<int> cHeight;
             
-    bool reload(ofFile &file) override;
+    void reload() override;
 
 };  
 

@@ -10,8 +10,6 @@
 
 #include "components/Analyzer.h"
 
-#include "ofxDotFrag.h"
-
 #define OVERSAMPLING 0
 
 class ofApp : public ofBaseApp{

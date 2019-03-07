@@ -1,11 +1,8 @@
 ofxGui
-ofxDotFrag
 ofxMidi
 ofxOsc
 ofxSIMDFloats
 ofxAudioFile
 ofxPDSP
-ofxLaunchControllers
 np-extra
 np-miscela
-ofxWatchFile

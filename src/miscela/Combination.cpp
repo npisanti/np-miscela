@@ -3,6 +3,8 @@
 
 void np::miscela::Combination::setup( int w, int h, int multisampling ){
     
+    bConfigAutoload = true;
+    
     config.setName("config");  
     canvas.setName("canvas");
         canvas.add( cWidth.set( "width", -1, 0, 5000) );
@@ -28,17 +30,13 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
     clear();
 }
 
-bool np::miscela::Combination::reload( ofFile &file ){
-
-    ofJson json = ofLoadJson( configpath );
+void np::miscela::Combination::reload(){
+    ofJson json = ofLoadJson( filepath );
     ofDeserialize( json, config );
 
     if( cWidth!=-1 && cHeight!=-1 ){
         ofSetWindowShape( cWidth, cHeight );
     }
-    
-    return true;
-        
 }
 
 void np::miscela::Combination::clear(){
@@ -52,9 +50,7 @@ void np::miscela::Combination::add( std::string path ){
     std::string ext = ofFilePath::getFileExt( path );
     
     if( ext == "json" ){
-        configpath = path;
-        setTargetPath( path );
-        setCheckIntervalTimef( 0.5f );
+        load( path, bConfigAutoload );
     }else{
         layers.emplace_back();
         layers.back().load( path );

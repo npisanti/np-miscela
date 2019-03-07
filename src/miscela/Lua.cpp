@@ -21,7 +21,6 @@ np::miscela::Lua::Lua(){
     before = 0.0f;
     speed = 1.0f;
     
-    parameters.setName("label me");
     parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
     parameters.add( control );
     parameters.add( position );
@@ -49,27 +48,19 @@ np::miscela::Lua::~Lua(){
     }
 }
 
-void np::miscela::Lua::load( std::string path ){
-    this->path = path;
-    filename = ofFilePath::getFileName( path ); 
-    parameters.setName( filename );
-    setTargetPath( path );
-    setCheckIntervalTimef( 0.25f );
-}
- 
-
-bool np::miscela::Lua::reload( ofFile &file ){
+void np::miscela::Lua::reload(){
     if(loaded){
         lua.scriptExit();
     }
     lua.init(true);
     luaopen_mg(lua); 
     luaopen_lfo(lua); 
-    lua.doScript(path, true);
+    lua.doScript( filepath, true);
     lua.scriptSetup();
     loaded = true;
     before = ofGetElapsedTimef();
-    return true;
+    
+    filename = ofFilePath::getFileName( filepath ); 
 }
     
 void np::miscela::Lua::draw( ofFbo & fbo ){

@@ -2,6 +2,8 @@
 # Some general ignore patterns
 
 miscela/bin/data/settings.xml
+miscela/bin/data/frames/*
+gifcraft/bin/data/*
 
 *.qbs
 

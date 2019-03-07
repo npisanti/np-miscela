@@ -51,7 +51,7 @@ void ofApp::setup(){
     gui.add( audioMap );
     gui.add( analyzer.parameters );
 
-    gui.add( saveFrames.set("save frames", 1, 1, 160 ) );
+    gui.add( saveFrames.set("save frames", 1, 1, 60*10 ) );
 
 	gui.minimizeAll();
     gui.loadFromFile( "settings.xml" ); 
@@ -130,7 +130,7 @@ void ofApp::update(){
     if( bSave ){
         ofPixels pixels;
         combo.fbo.readToPixels( pixels );
-        ofSaveImage(pixels, "frame"+ofToString(ofGetFrameNum())+".png" );
+        ofSaveImage(pixels, "frames/frame"+ofToString(ofGetFrameNum())+".png" );
         saveCounter--;
         if(saveCounter==0) bSave = false;
     }

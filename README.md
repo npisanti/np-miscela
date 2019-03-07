@@ -1,10 +1,16 @@
 miscela
 =====================================
-`miscela` is an openFrameworks app i use to mix GLSL fragment shaders in realtime. This repo also contains snippets of GLSL code and the shaders i'm working on at the time.
+`miscela` is an openFrameworks app i use to layer GLSL fragment shaders and Lua scripts in realtime. It also can be used as addon to have a sandbox for the very same files. Still highly experimental.
 
-The code in this repository will change as the water flows, don't be attached to it =) 
+usage is something like this:
+```
+miscela /path/to/script.lua /path/to/shader.frag /other/shader.frag
+```
 
-For Lua scripting i'm using [nanovg](https://github.com/memononen/nanovg) binded with the help of [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit. Some of the binded code also takes insperation from Satoru Higa's [ofxNanoVG](https://github.com/satoruhiga/ofxNanoVG).
+Lua scripts are overlayed, fragment shader use the last script/fragment output as uniform `u_tex0`
+
+
+For Lua scripting i'm using [nanovg](https://github.com/memononen/nanovg) binded with the help of [ofxLua](https://github.com/danomatika/ofxLua), that i just tweaked a bit. 
 
 
 miscela Nicola Pisanti MIT License 2019   

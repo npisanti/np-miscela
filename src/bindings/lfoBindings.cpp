@@ -2701,6 +2701,10 @@ extern "C" {
 static int _wrap_setPlayHead(lua_State* L) { int SWIG_arg = 0; double arg1 ; SWIG_check_num_args("lfo::setPlayHead",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::setPlayHead",1,"double"); arg1 = (double)lua_tonumber(L, 1);
   lfo::setPlayHead(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_phasor(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result; SWIG_check_num_args("lfo::phasor",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::phasor",1,"double"); arg1 = (double)lua_tonumber(L, 1);
+  result = (double)lfo::phasor(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
 static int _wrap_triangle__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
   SWIG_check_num_args("lfo::triangle",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::triangle",1,"double");
   arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::triangle(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
@@ -2781,6 +2785,34 @@ static int _wrap_square(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = 
     return _wrap_square__SWIG_0(L);}  if (argc == 2) { return _wrap_square__SWIG_1(L);} 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'square'\n" "  Possible C/C++ prototypes are:\n"
   "    lfo::square(double)\n" "    lfo::square(double,double)\n"); lua_error(L);return 0; }
+static int _wrap_noise__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double result;
+  SWIG_check_num_args("lfo::noise",1,1) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
+  arg1 = (double)lua_tonumber(L, 1); result = (double)lfo::noise(arg1); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
+  SWIG_check_num_args("lfo::noise",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); result = (double)lfo::noise(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double result;
+  SWIG_check_num_args("lfo::noise",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::noise",3,"double");
+  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
+  result = (double)lfo::noise(arg1,arg2,arg3); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise__SWIG_3(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
+  double result; SWIG_check_num_args("lfo::noise",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("lfo::noise",1,"double");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lfo::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("lfo::noise",3,"double");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("lfo::noise",4,"double"); arg1 = (double)lua_tonumber(L, 1);
+  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
+  result = (double)lfo::noise(arg1,arg2,arg3,arg4); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_noise(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 1) {
+    return _wrap_noise__SWIG_0(L);}  if (argc == 2) { return _wrap_noise__SWIG_1(L);}  if (argc == 3) {
+    return _wrap_noise__SWIG_2(L);}  if (argc == 4) { return _wrap_noise__SWIG_3(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'noise'\n" "  Possible C/C++ prototypes are:\n"
+  "    lfo::noise(double)\n" "    lfo::noise(double,double)\n" "    lfo::noise(double,double,double)\n"
+  "    lfo::noise(double,double,double,double)\n"); lua_error(L);return 0; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     {0,0,0}
 };
@@ -2789,12 +2821,14 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 };
 static swig_lua_method swig_SwigModule_methods[]= {
     { "setPlayHead", _wrap_setPlayHead},
+    { "phasor", _wrap_phasor},
     { "triangle", _wrap_triangle},
     { "ramp", _wrap_ramp},
     { "saw", _wrap_saw},
     { "sine", _wrap_sine},
     { "pulse", _wrap_pulse},
     { "square", _wrap_square},
+    { "noise", _wrap_noise},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {

@@ -7,6 +7,8 @@
 namespace lfo{
     
     void setPlayHead( double value );
+
+    double phasor( double speed );
      
     double triangle( double speed );
     double ramp( double speed );
@@ -21,4 +23,10 @@ namespace lfo{
     double sine( double speed, double phase );
     double pulse( double speed, double width, double phase );  
     double square( double speed, double phase );  
+    
+    double noise( double speed );
+    double noise( double speed, double x );
+    double noise( double speed, double x, double y );
+    double noise( double speed, double x, double y, double z );
+
 }

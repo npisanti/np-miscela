@@ -70,8 +70,9 @@ void np::miscela::Lua::draw( ofFbo & fbo ){
     float now = ofGetElapsedTimef();
     clock += (now-before) * (speed*speed*speed);
     before = now;
-    
-    lua.setNumber( "time", (lua_Number) clock );
+    lfo::setPlayHead( clock );
+        
+    //lua.setNumber( "time", (lua_Number) clock );
     lua.setNumber( "width", (lua_Number) fbo.getWidth() );
     lua.setNumber( "height", (lua_Number) fbo.getHeight() );
     lua.setNumber( "control", (lua_Number) control );
@@ -82,8 +83,6 @@ void np::miscela::Lua::draw( ofFbo & fbo ){
 
     mg::setColorA( colorA.get().r, colorA.get().g, colorA.get().b );
     mg::setColorB( colorB.get().r, colorB.get().g, colorB.get().b );
-    lfo::setPlayHead( clock );
-    
     
     fbo.begin();
         ofSetColor(255);

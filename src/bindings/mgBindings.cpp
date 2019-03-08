@@ -2930,29 +2930,6 @@ static int _wrap_random(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = 
     return _wrap_random__SWIG_2(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'random'\n"
   "  Possible C/C++ prototypes are:\n" "    mg::random()\n" "    mg::random(double)\n" "    mg::random(double,double)\n");
   lua_error(L);return 0; }
-static int _wrap_noise__SWIG_0(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double result;
-  SWIG_check_num_args("mg::noise",2,2) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::noise",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::noise",2,"double"); arg1 = (double)lua_tonumber(L, 1);
-  arg2 = (double)lua_tonumber(L, 2); result = (double)mg::noise(arg1,arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_noise__SWIG_1(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double result;
-  SWIG_check_num_args("mg::noise",3,3) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::noise",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::noise",3,"double");
-  arg1 = (double)lua_tonumber(L, 1); arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3);
-  result = (double)mg::noise(arg1,arg2,arg3); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_noise__SWIG_2(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
-  double result; SWIG_check_num_args("mg::noise",4,4) if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::noise",1,"double");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::noise",2,"double"); if(!lua_isnumber(L,3)) SWIG_fail_arg("mg::noise",3,"double");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("mg::noise",4,"double"); arg1 = (double)lua_tonumber(L, 1);
-  arg2 = (double)lua_tonumber(L, 2); arg3 = (double)lua_tonumber(L, 3); arg4 = (double)lua_tonumber(L, 4);
-  result = (double)mg::noise(arg1,arg2,arg3,arg4); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg;
-  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_noise(lua_State* L) { int argc; int argv[5]={ 1,2,3,4,5} ; argc = lua_gettop(L); if (argc == 2) {
-    return _wrap_noise__SWIG_0(L);}  if (argc == 3) { return _wrap_noise__SWIG_1(L);}  if (argc == 4) {
-    return _wrap_noise__SWIG_2(L);}  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'noise'\n"
-  "  Possible C/C++ prototypes are:\n" "    mg::noise(double,double)\n" "    mg::noise(double,double,double)\n"
-  "    mg::noise(double,double,double,double)\n"); lua_error(L);return 0; }
 static int _wrap_chance(lua_State* L) { int SWIG_arg = 0; double arg1 ; bool result; SWIG_check_num_args("mg::chance",1,1)
   if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::chance",1,"double"); arg1 = (double)lua_tonumber(L, 1);
   result = (bool)mg::chance(arg1); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
@@ -3039,7 +3016,6 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "arcTo", _wrap_arcTo},
     { "map", _wrap_map},
     { "random", _wrap_random},
-    { "noise", _wrap_noise},
     { "chance", _wrap_chance},
     { "push", _wrap_push},
     { "pop", _wrap_pop},

@@ -59,17 +59,15 @@ namespace mg {
 	void bezierTo( double c1x, double c1y, double c2x, double c2y, double x, double y );
 	void arcTo( double x1, double y1, double x2, double y2, double radius );
     
+    
     double map( double input, double inmin, double inmax, double outmin, double outmax );
     
     double random();
     double random( double max );
     double random( double min, double max );
-    
-    double noise( double x, double y );
-    double noise( double x, double y, double z );
-    double noise( double x, double y, double z, double w );
     bool chance( double value );
-
+        
+        
     void push();
     void pop();
     void reset();

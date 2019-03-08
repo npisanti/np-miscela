@@ -310,9 +310,6 @@ namespace mg {
         nvgArcTo( _vg, x1, y1, x2, y2, radius );
     }
 
-    double noise( double x, double y ){ return ofNoise( x, y ); }
-    double noise( double x, double y, double z ){ return ofNoise( x, y, z ); }
-    double noise( double x, double y, double z, double w ){ return ofNoise( x, y, z, w ); }       
     
     bool chance( double value ){ return (ofRandomuf()<value); }
     

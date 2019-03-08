@@ -8,6 +8,10 @@ namespace lfo{
     void setPlayHead( double value ){
         playhead = value;
     }
+
+    double phasor( double speed ){
+        return modf(playhead*speed, &_ipart);
+    }
      
     double triangle( double speed ){
         return abs( (modf(playhead*speed, &_ipart) * 2.0) - 1.0 );
@@ -85,4 +89,13 @@ namespace lfo{
         if( value >= 1.0 ){ value = rebound; }
         return value;
     }
+    
+    double noise( double speed ){ return ofNoise( playhead*speed, 0.0f ); }   
+    
+    double noise( double speed, double x ){ return ofNoise( playhead*speed, x ); }
+    
+    double noise( double speed, double x, double y ){ return ofNoise( playhead*speed, x, y ); }
+    
+    double noise( double speed, double x, double y, double z ){ return ofNoise( playhead*speed, x, y, z ); }    
+    
 }

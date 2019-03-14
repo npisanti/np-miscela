@@ -9,6 +9,7 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
     canvas.setName("canvas");
         canvas.add( cWidth.set( "width", -1, 0, 5000) );
         canvas.add( cHeight.set( "height", -1, 0, 5000) );
+        canvas.add( cFrameRate.set( "framerate", -1, 1, 120) );
     config.add( canvas );
     webcam.setName("webcam");
         webcam.add( webcamW.set("width", -1, 0, 5000) );
@@ -36,6 +37,10 @@ void np::miscela::Combination::reload(){
 
     if( cWidth!=-1 && cHeight!=-1 ){
         ofSetWindowShape( cWidth, cHeight );
+    }
+
+    if( cFrameRate!=-1 ){
+        ofSetFrameRate( cFrameRate );
     }
 }
 

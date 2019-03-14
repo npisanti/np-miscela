@@ -49,6 +49,7 @@ private:
         ofParameterGroup canvas;
             ofParameter<int> cWidth;
             ofParameter<int> cHeight;
+            ofParameter<int> cFrameRate;
             
     void reload() override;
 

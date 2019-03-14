@@ -91,6 +91,11 @@ namespace mg {
     void size( int w, int h ){
         ofSetWindowShape( w, h );
     }
+    
+    void framerate( int value ){
+        ofSetFrameRate( value );
+    }
+    
     void background( double r, double g, double b, double a ){
         ofClear( r*255.0, g*255.0, b*255.0, a*255.0 );
     }

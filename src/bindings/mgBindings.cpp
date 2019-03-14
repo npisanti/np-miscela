@@ -2702,6 +2702,9 @@ static int _wrap_size(lua_State* L) { int SWIG_arg = 0; int arg1 ; int arg2 ; SW
   if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::size",1,"int"); if(!lua_isnumber(L,2)) SWIG_fail_arg("mg::size",2,"int");
   arg1 = (int)lua_tonumber(L, 1); arg2 = (int)lua_tonumber(L, 2); mg::size(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_framerate(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("mg::framerate",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("mg::framerate",1,"int"); arg1 = (int)lua_tonumber(L, 1); mg::framerate(arg1);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_clear(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("mg::clear",0,0) mg::clear(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_background(lua_State* L) { int SWIG_arg = 0; double arg1 ; double arg2 ; double arg3 ; double arg4 ;
@@ -2986,6 +2989,7 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 };
 static swig_lua_method swig_SwigModule_methods[]= {
     { "size", _wrap_size},
+    { "framerate", _wrap_framerate},
     { "clear", _wrap_clear},
     { "background", _wrap_background},
     { "fade", _wrap_fade},

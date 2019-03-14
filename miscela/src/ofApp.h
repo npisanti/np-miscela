@@ -59,5 +59,6 @@ class ofApp : public ofBaseApp{
             
         bool                bSave;
         ofParameter<int>    saveFrames;
+        ofParameter<int>    saveCountDown;
         int                 saveCounter;
 };

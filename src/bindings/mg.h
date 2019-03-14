@@ -8,6 +8,8 @@
 namespace mg {
 
     void size( int w, int h );
+    void framerate( int value );
+    
     void clear();
     void background( double r, double g, double b, double a );
     void fade( double speed );

@@ -52,6 +52,7 @@ void ofApp::setup(){
     gui.add( analyzer.parameters );
 
     gui.add( saveFrames.set("save frames", 1, 1, 60*10 ) );
+    gui.add( saveCountDown.set("countdown", 0, 0, 60*5 ) );
 
 	gui.minimizeAll();
     gui.loadFromFile( "settings.xml" ); 
@@ -128,9 +129,11 @@ void ofApp::update(){
     combo.update();
     
     if( bSave ){
-        ofPixels pixels;
-        combo.fbo.readToPixels( pixels );
-        ofSaveImage(pixels, "frames/frame"+ofToString(ofGetFrameNum())+".png" );
+        if( saveCounter < saveFrames ){
+            ofPixels pixels;
+            combo.fbo.readToPixels( pixels );
+            ofSaveImage(pixels, "frames/frame"+ofToString(ofGetFrameNum())+".png" );            
+        }
         saveCounter--;
         if(saveCounter==0) bSave = false;
     }
@@ -152,6 +155,11 @@ void ofApp::draw(){
         gui.draw(); 
         ofDrawBitmapString( "fps = " + ofToString(ofGetFrameRate()), ofGetWidth()-120, ofGetHeight()-20 );
     }      
+    
+    if( saveCounter > saveFrames){
+        int remaining = saveCounter - saveFrames;
+        ofDrawBitmapString( "countdown = " + ofToString( remaining ), ofGetWidth()-120, 20 );
+    }
 }
 
 //--------------------------------------------------------------
@@ -184,7 +192,7 @@ void ofApp::keyPressed(int key){
         
         case 's':   
             bSave = true;
-            saveCounter = saveFrames;
+            saveCounter = saveFrames + saveCountDown;
         break;
     }
 }

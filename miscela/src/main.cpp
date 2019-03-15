@@ -16,9 +16,10 @@ int main( int argc, char *argv[] ){
         settings.glesVersion = 2;
 #else
         ofGLFWWindowSettings settings;
+        settings.resizable = true;
 #endif
         settings.setSize( 480, 480 );
-        settings.resizable = true;
+
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
         shared_ptr<ofApp> mainApp(new ofApp);

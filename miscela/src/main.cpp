@@ -11,7 +11,12 @@ int main( int argc, char *argv[] ){
             paths.push_back( std::string( argv[i] ) );
         }
         
+#ifdef __ARM_ARCH
+        ofGLESWindowSettings settings;
+        settings.glesVersion = 2;
+#else
         ofGLFWWindowSettings settings;
+#endif
         settings.setSize( 480, 480 );
         settings.resizable = true;
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);

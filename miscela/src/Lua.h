@@ -3,9 +3,7 @@
 
 #include "ofMain.h"
 #include "SandBox.h"
-#include "ofxLua/src/ofxLua.h"
-
-#include "nanovg/src/nanovg.h"
+#include "ofxLua.h"
 
 #include "FileWatcher.h"
 
@@ -37,9 +35,6 @@ private:
     float clock;
     float before;
 
-    static int constructed;
-    
-    float aspect;
 };
     
 }}

@@ -30,7 +30,7 @@ public:
         ofDirectory dir;
         std::string path = "/home/";
         path += user;
-        path += "/oF/addons/np-miscela/miscela/bin/data/frames";
+        path += "/oF/apps/np-miscela/miscela/bin/data/frames";
         
         std::cout<<"getting images from is "<<path<<"\n";
         

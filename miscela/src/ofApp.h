@@ -6,7 +6,7 @@
 
 #include "np-extra.h"
 
-#include "miscela/Combination.h"
+#include "Combination.h"
 
 #include "components/Analyzer.h"
 

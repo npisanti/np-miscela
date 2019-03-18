@@ -2,13 +2,15 @@
 #pragma once 
 
 #include "ofMain.h"
-#include "miscela/DotFrag.h"
-#include "miscela/Lua.h"
+#include "DotFrag.h"
+#include "Lua.h"
 
 namespace np{ namespace miscela {
 
 class Layer{
+
 public:
+
     Layer();
 
     void load( std::string path );
@@ -31,11 +33,13 @@ public:
     int getHeight() const { return height; };
     
 private:
+    
     int mode;
+    
     np::miscela::DotFrag  frag;
     np::miscela::Lua      lua;
-    ofImage         image;
-    ofVideoPlayer   video;
+    ofImage               image;
+    ofVideoPlayer         video;
    
     bool loaded;
     

@@ -5,4 +5,5 @@ ofxSIMDFloats
 ofxAudioFile
 ofxPDSP
 np-extra
+ofxDotFrag
 np-miscela

@@ -65,6 +65,12 @@ void ofApp::setup(){
     
     bSave = false;
     saveCounter = 0;
+    
+#ifdef __ARM_ARCH
+    bShowFrameRate = true;
+#else
+    bShowFrameRate = false;
+#endif
 }
 
 //--------------------------------------------------------------
@@ -153,8 +159,14 @@ void ofApp::draw(){
         audioMeter = analyzer.meter();
         modMeter = mod;
         gui.draw(); 
+    }   
+    
+    if( bShowFrameRate || bDrawGui ){
+        ofSetColor( 0 );
+        ofDrawBitmapString( "fps = " + ofToString(ofGetFrameRate()), ofGetWidth()-120, 24 );
+        ofSetColor( 255 );
         ofDrawBitmapString( "fps = " + ofToString(ofGetFrameRate()), ofGetWidth()-120, ofGetHeight()-20 );
-    }      
+    }   
     
     if( saveCounter > saveFrames){
         int remaining = saveCounter - saveFrames;
@@ -187,6 +199,8 @@ void ofApp::onUseCamTexture( bool & value ){
 void ofApp::keyPressed(int key){
 	switch(key){
 		case 'g': bDrawGui = !bDrawGui; break;
+        
+		case 'f': bShowFrameRate = !bShowFrameRate; break;
         
         case 'r': bResize=true; break;
         

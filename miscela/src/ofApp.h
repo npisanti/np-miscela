@@ -57,6 +57,8 @@ class ofApp : public ofBaseApp{
             ofParameter<float> audioMeter;
             ofParameter<float> modMeter;
             
+        bool bShowFrameRate;
+            
         bool                bSave;
         ofParameter<int>    saveFrames;
         ofParameter<int>    saveCountDown;

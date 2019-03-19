@@ -23,9 +23,9 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
     ofFboSettings settings;
     settings.width = w/cDownSample;
     settings.height = h/cDownSample;
-    settings.numSamples = 0;
-    settings.useStencil = true;
+    #ifndef __ARM_ARCH
     settings.numSamples = multisampling;
+    #endif
     settings.minFilter = GL_NEAREST;
     settings.maxFilter = GL_NEAREST;
     fbo.allocate( settings );
@@ -82,9 +82,9 @@ void np::miscela::Combination::resize( int w, int h ){
     ofFboSettings settings;
     settings.width = w/cDownSample;
     settings.height = h/cDownSample;
-    settings.numSamples = 0;
-    settings.useStencil = true;
+    #ifndef __ARM_ARCH
     settings.numSamples = multisampling;
+    #endif
     settings.minFilter = GL_NEAREST;
     settings.maxFilter = GL_NEAREST;
     fbo.allocate( settings );

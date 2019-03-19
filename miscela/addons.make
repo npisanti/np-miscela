@@ -6,4 +6,3 @@ ofxAudioFile
 ofxPDSP
 np-extra
 ofxDotFrag
-ofxLua

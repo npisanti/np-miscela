@@ -15,10 +15,6 @@ void np::miscela::Layer::load( std::string path ){
         loaded = true;
         frag.load( path );
         mode = 0;
-    }else if( ext == "lua" ){
-        loaded = true;
-        lua.load( path );
-        mode = 1;
     }else if( ext == "jpg" || ext == "png" 
            || ext == "bmp" || ext == "gif" ){
         loaded = true;
@@ -43,11 +39,7 @@ void np::miscela::Layer::render( ofFbo & fbo ){
             case 0: // shader
                 frag.apply( fbo );
             break;
-            
-            case 1: // lua
-                lua.draw( fbo );
-            break;
-            
+
             case 2: // image
             {
                 ofSetColor(255);
@@ -89,53 +81,3 @@ void np::miscela::Layer::render( ofFbo & fbo ){
     }
 }
     
-void np::miscela::Layer::setControl( float value ){
-    switch( mode ){
-        case 0: frag.control = value; break;
-        case 1: lua.control = value; break;
-        default: break;
-    }
-}
-
-void np::miscela::Layer::setModulation( float value ){
-    switch( mode ){
-        case 0: frag.modulation = value; break;
-        case 1: lua.modulation = value; break;
-        default: break;
-    }
-}
-
-void np::miscela::Layer::setSpeed( float value ){
-    switch( mode ){
-        case 0: frag.speed = value; break;
-        case 1: lua.speed = value; break;
-        case 3: video.setSpeed( value ); break;
-        default: break;
-    }
-}
-
-void np::miscela::Layer::setColorA( ofColor color ){
-    switch( mode ){
-        case 0: frag.colorA = color; break;
-        case 1: lua.colorA = color; break;
-        default: break;
-    }
-}
-
-void np::miscela::Layer::setColorB( ofColor color ){
-    switch( mode ){
-        case 0: frag.colorB = color; break;
-        case 1: lua.colorB = color; break;
-        default: break;
-    } 
-}
-
-void np::miscela::Layer::setPosition( const glm::vec3 & position ){
-    switch( mode ){
-        case 0: frag.position = position; break;
-        case 1: lua.position = position; break;
-        default: break;
-    }
-}
-
-

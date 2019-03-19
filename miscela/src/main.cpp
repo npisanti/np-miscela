@@ -18,7 +18,7 @@ int main( int argc, char *argv[] ){
         ofGLFWWindowSettings settings;
         settings.resizable = true;
 #endif
-        settings.setSize( 480, 480 );
+        settings.setSize( 800, 480 );
 
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 

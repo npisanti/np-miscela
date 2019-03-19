@@ -4,6 +4,8 @@
 #include "ofMain.h"
 #include "Layer.h"
 
+extern bool bShowFrameRate;
+
 namespace np{ namespace miscela {
 
 class Combination : public FileWatcher {
@@ -23,7 +25,7 @@ public:
     void setSpeed( float value );
     void setModulation( float value );
     
-    void draw( int x, int y ){ fbo.draw( x, y ); }
+    void draw( int x, int y ){ fbo.draw( x, y, fbo.getWidth()*cDownSample, fbo.getHeight()*cDownSample ); }
 
     std::vector<Layer> layers;
 
@@ -50,6 +52,8 @@ private:
             ofParameter<int> cWidth;
             ofParameter<int> cHeight;
             ofParameter<int> cFrameRate;
+            ofParameter<bool> cShowFrameRate;
+            ofParameter<int> cDownSample;            
             
     void reload() override;
 

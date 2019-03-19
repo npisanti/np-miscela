@@ -9,7 +9,9 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
     canvas.setName("canvas");
         canvas.add( cWidth.set( "width", -1, 0, 5000) );
         canvas.add( cHeight.set( "height", -1, 0, 5000) );
+        canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
         canvas.add( cFrameRate.set( "framerate", -1, 1, 120) );
+        canvas.add( cShowFrameRate.set( "show_fps", false) );
     config.add( canvas );
     webcam.setName("webcam");
         webcam.add( webcamW.set("width", -1, 0, 5000) );
@@ -17,13 +19,15 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
         webcam.add( webcamID.set("ID", -1, -1, 12) );
         webcam.add( webcamMode.set("mode", -1, 0, 12) );
     config.add( webcam );
-        
+            
     ofFboSettings settings;
-    settings.width = w;
-    settings.height = h;
+    settings.width = w/cDownSample;
+    settings.height = h/cDownSample;
     settings.numSamples = 0;
     settings.useStencil = true;
     settings.numSamples = multisampling;
+    settings.minFilter = GL_NEAREST;
+    settings.maxFilter = GL_NEAREST;
     fbo.allocate( settings );
   
     this->multisampling = multisampling;
@@ -34,6 +38,8 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
 void np::miscela::Combination::reload(){
     ofJson json = ofLoadJson( filepath );
     ofDeserialize( json, config );
+
+    bShowFrameRate = cShowFrameRate;
 
     if( cWidth!=-1 && cHeight!=-1 ){
         ofSetWindowShape( cWidth, cHeight );
@@ -73,7 +79,15 @@ void np::miscela::Combination::update(){
 }
 
 void np::miscela::Combination::resize( int w, int h ){
-    fbo.allocate( w, h, GL_RGBA, multisampling );
+    ofFboSettings settings;
+    settings.width = w/cDownSample;
+    settings.height = h/cDownSample;
+    settings.numSamples = 0;
+    settings.useStencil = true;
+    settings.numSamples = multisampling;
+    settings.minFilter = GL_NEAREST;
+    settings.maxFilter = GL_NEAREST;
+    fbo.allocate( settings );
 }
     
 void np::miscela::Combination::setControl( float value ){

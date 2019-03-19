@@ -1,6 +1,8 @@
 
 #include "ofApp.h"
 
+bool bShowFrameRate = false;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -66,13 +68,7 @@ void ofApp::setup(){
     
     bSave = false;
     saveCounter = 0;
-    
 
-#ifdef __ARM_ARCH
-    bShowFrameRate = true;
-#else
-    bShowFrameRate = false;
-#endif
 }
 
 //--------------------------------------------------------------

@@ -57,6 +57,7 @@ void ofApp::setup(){
 	gui.minimizeAll();
     gui.loadFromFile( "settings.xml" ); 
     bDrawGui = false;
+    ofHideCursor();
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
     
@@ -66,6 +67,7 @@ void ofApp::setup(){
     bSave = false;
     saveCounter = 0;
     
+
 #ifdef __ARM_ARCH
     bShowFrameRate = true;
 #else
@@ -198,7 +200,16 @@ void ofApp::onUseCamTexture( bool & value ){
 
 void ofApp::keyPressed(int key){
 	switch(key){
-		case 'g': bDrawGui = !bDrawGui; break;
+		case 'g': 
+        {
+            bDrawGui = !bDrawGui;
+            if( bDrawGui ){
+                ofShowCursor();
+            }else{
+                ofHideCursor();
+            }
+        } 
+        break;
         
 		case 'f': bShowFrameRate = !bShowFrameRate; break;
         

@@ -4,7 +4,6 @@
 
 #include "dotfrag/Live.h"
 #include "SandBox.h"
-#include "FileWatcher.h"
 
 namespace np { namespace miscela {
 

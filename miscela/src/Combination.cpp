@@ -1,28 +1,12 @@
 
 #include "Combination.h"
 
-void np::miscela::Combination::setup( int w, int h, int multisampling ){
-    
-    bConfigAutoload = true;
-    
-    config.setName("config");  
-    canvas.setName("canvas");
-        canvas.add( cWidth.set( "width", -1, 0, 5000) );
-        canvas.add( cHeight.set( "height", -1, 0, 5000) );
-        canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
-        canvas.add( cFrameRate.set( "framerate", -1, 1, 120) );
-        canvas.add( cShowFrameRate.set( "show_fps", false) );
-    config.add( canvas );
-    webcam.setName("webcam");
-        webcam.add( webcamW.set("width", -1, 0, 5000) );
-        webcam.add( webcamH.set("height", -1, 0, 5000) );
-        webcam.add( webcamID.set("ID", -1, -1, 12) );
-        webcam.add( webcamMode.set("mode", -1, 0, 12) );
-    config.add( webcam );
-            
+void np::miscela::Combination::setup( int w, int h, int downsample, int multisampling ){
+    this->downsample = downsample;
+
     ofFboSettings settings;
-    settings.width = w/cDownSample;
-    settings.height = h/cDownSample;
+    settings.width = w/downsample;
+    settings.height = h/downsample;
     #ifndef __ARM_ARCH
     settings.numSamples = multisampling;
     #endif
@@ -35,21 +19,6 @@ void np::miscela::Combination::setup( int w, int h, int multisampling ){
     clear();
 }
 
-void np::miscela::Combination::reload(){
-    ofJson json = ofLoadJson( filepath );
-    ofDeserialize( json, config );
-
-    bShowFrameRate = cShowFrameRate;
-
-    if( cWidth!=-1 && cHeight!=-1 ){
-        ofSetWindowShape( cWidth, cHeight );
-    }
-
-    if( cFrameRate!=-1 ){
-        ofSetFrameRate( cFrameRate );
-    }
-}
-
 void np::miscela::Combination::clear(){
     fbo.begin();
         ofClear( 0, 0, 0, 255 );
@@ -58,18 +27,13 @@ void np::miscela::Combination::clear(){
 
 void np::miscela::Combination::add( std::string path ){
     
-    std::string ext = ofFilePath::getFileExt( path );
-    
-    if( ext == "json" ){
-        load( path, bConfigAutoload );
-    }else{
-        layers.emplace_back();
-        layers.back().load( path );
+    layers.emplace_back();
+    layers.back().load( path );
 
-        if(fbo.getWidth()==0 || fbo.getHeight()==0){
-            ofLogError() << "[np::miscela::Combination] added script without calling setup() first, undefined behavior\n";
-        }        
-    }    
+    if(fbo.getWidth()==0 || fbo.getHeight()==0){
+        ofLogError() << "[np::miscela::Combination] added script without calling setup() first, undefined behavior\n";
+    }        
+
 }
 
 void np::miscela::Combination::update(){
@@ -80,8 +44,8 @@ void np::miscela::Combination::update(){
 
 void np::miscela::Combination::resize( int w, int h ){
     ofFboSettings settings;
-    settings.width = w/cDownSample;
-    settings.height = h/cDownSample;
+    settings.width = w/downsample;
+    settings.height = h/downsample;
     #ifndef __ARM_ARCH
     settings.numSamples = multisampling;
     #endif

@@ -1,12 +1,10 @@
 
 #include "ofApp.h"
 
-bool bShowFrameRate = false;
-
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    combo.setup( ofGetWidth(), ofGetHeight() );
+    combo.setup( ofGetWidth(), ofGetHeight(), downsample );
     combo.layers.reserve( 12 );
     for( auto & path : paths ){
         combo.add( path );
@@ -68,7 +66,10 @@ void ofApp::setup(){
     
     bSave = false;
     saveCounter = 0;
-
+    
+    if( camID != -1 ){
+        openCam( camID, camW, camH );
+    }
 }
 
 //--------------------------------------------------------------
@@ -94,17 +95,14 @@ void ofApp::update(){
     combo.setSpeed( speed );
     combo.setPosition( position );
     
-    if(combo.getRequiredWebcam()!=-1){
-        if( ! cam.isInitialized() ){ 
-            openCam( combo.getRequiredWebcam(), combo.getWebcamWidth(), combo.getWebcamHeight() );
-        }
+    if( camID != -1 ){
         if( cam.isInitialized() ){ cam.update(); }
         
         combo.fbo.begin();
             ofClear( 0, 0, 0, 0 );
             ofSetColor( 255 );
             
-            switch( combo.getWebcamMode() ){
+            switch( camMode ){
                 case 0:
                     cam.draw( 0, 0, combo.fbo.getWidth(), combo.fbo.getHeight() );
                 break;

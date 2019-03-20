@@ -1,13 +1,13 @@
 miscela
 =====================================
-`miscela` is an openFrameworks app i use to layer GLSL fragment shaders and Lua scripts in realtime. Still highly experimental.
+`miscela` is an openFrameworks app i use to layer GLSL fragment shaders. Still highly experimental.
 
 usage is something like this:
 ```
-miscela /path/to/script.lua /path/to/shader.frag /other/shader.frag
+miscela  /path/to/optional/config.json /path/to/shader.frag /other/shader.frag 
 ```
-Lua scripts are overlayed, fragment shader use the last script/fragment output as uniform `u_tex0`
+Fragment shader use the last script/fragment output as uniform `u_tex0`, image and video can be passed and they are overlayed.
 
-You need [ofxLua](https://github.com/danomatika/ofxLua) and [ofxDotFrag](https://github.com/npisanti/ofxDotFrag).
+You need [ofxDotFrag](https://github.com/npisanti/ofxDotFrag).
 
 miscela Nicola Pisanti MIT License 2019   

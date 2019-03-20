@@ -13,6 +13,7 @@
 #define OVERSAMPLING 0
 
 class ofApp : public ofBaseApp{
+    
 	public:
 		void setup();
 		void update();
@@ -61,4 +62,12 @@ class ofApp : public ofBaseApp{
         ofParameter<int>    saveFrames;
         ofParameter<int>    saveCountDown;
         int                 saveCounter;
+        
+        bool bShowFrameRate;
+        int downsample;
+        int camMode;
+        int camID;
+        int camW;
+        int camH;
+
 };

@@ -20,8 +20,8 @@ int main( int argc, char *argv[] ){
                 ofParameter<int> cDownSample;      
         config.setName("config");  
         canvas.setName("canvas");
-            canvas.add( cWidth.set( "width", -1, 0, 5000) );
-            canvas.add( cHeight.set( "height", -1, 0, 5000) );
+            canvas.add( cWidth.set( "width", 800, 0, 5000) );
+            canvas.add( cHeight.set( "height", 480, 0, 5000) );
             canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
             canvas.add( cFrameRate.set( "framerate", -1, 1, 120) );
             canvas.add( cShowFrameRate.set( "show_fps", false) );
@@ -56,12 +56,7 @@ int main( int argc, char *argv[] ){
         settings.resizable = true;
 #endif
 
-        int width = 800; 
-        int height = 480;
-        if( cWidth != -1 ){ width = cWidth; }
-        if( cHeight != -1 ){ height = cHeight; }
-        settings.setSize( width, height );
-        
+        settings.setSize( cWidth, cHeight );        
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
         shared_ptr<ofApp> mainApp(new ofApp);

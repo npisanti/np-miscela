@@ -22,6 +22,7 @@ public:
     void setPosition( const glm::vec3 & position ){ frag.position = position; }
     void setSpeed( float value ){ frag.speed = value; }
     void setModulation( float value ){ frag.modulation = value; }
+    void setTime( float value ){ frag.setTime( value ); }
     
     bool isFragment(){ return mode==0; }
     bool requiresClear(){ return mode==0; }

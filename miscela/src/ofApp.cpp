@@ -53,6 +53,7 @@ void ofApp::setup(){
 
     gui.add( saveFrames.set("save frames", 1, 1, 60*10 ) );
     gui.add( saveCountDown.set("countdown", 0, 0, 60*5 ) );
+    gui.add( saveStart.set("start second", 0, 0, 60 ) );
 
 	gui.minimizeAll();
     gui.loadFromFile( "settings.xml" ); 
@@ -132,6 +133,10 @@ void ofApp::update(){
     
     if( bSave ){
         if( saveCounter < saveFrames ){
+            float frametime = ( saveFrames-saveCounter ) / float(saveFrames );
+            frametime *= saveFrames / framerate ;
+            frametime += float( saveStart );
+            
             ofPixels pixels;
             combo.fbo.readToPixels( pixels );
             ofSaveImage(pixels, "frames/frame"+ofToString(ofGetFrameNum())+".png" );            
@@ -212,6 +217,7 @@ void ofApp::keyPressed(int key){
         case 's':   
             bSave = true;
             saveCounter = saveFrames + saveCountDown;
+            combo.setSpeed( 0.0f );
         break;
     }
 }

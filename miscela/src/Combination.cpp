@@ -89,3 +89,9 @@ void np::miscela::Combination::setModulation( float value ){
         layer.setModulation( value );
     }
 }
+
+void np::miscela::Combination::setTime( float value ){
+    for( auto & layer : layers ){
+        layer.setTime( value );
+    }
+}

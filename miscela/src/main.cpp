@@ -23,7 +23,7 @@ int main( int argc, char *argv[] ){
             canvas.add( cWidth.set( "width", 800, 0, 5000) );
             canvas.add( cHeight.set( "height", 480, 0, 5000) );
             canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
-            canvas.add( cFrameRate.set( "framerate", -1, 1, 120) );
+            canvas.add( cFrameRate.set( "framerate", 60, 1, 120) );
             canvas.add( cShowFrameRate.set( "show_fps", false) );
         config.add( canvas );
         webcam.setName("webcam");
@@ -67,7 +67,10 @@ int main( int argc, char *argv[] ){
         mainApp->camW = webcamW;
         mainApp->camH = webcamH;
         mainApp->camMode = webcamMode;
+        mainApp->framerate = cFrameRate;
 
+        ofSetFrameRate( cFrameRate );
+        
         ofRunApp(mainWindow, mainApp);
         ofRunMainLoop();
 

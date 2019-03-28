@@ -61,7 +61,9 @@ class ofApp : public ofBaseApp{
         bool                bSave;
         ofParameter<int>    saveFrames;
         ofParameter<int>    saveCountDown;
+        ofParameter<int>    saveStart;
         int                 saveCounter;
+        
         
         bool bShowFrameRate;
         int downsample;
@@ -69,5 +71,5 @@ class ofApp : public ofBaseApp{
         int camID;
         int camW;
         int camH;
-
+        float framerate;
 };

@@ -22,6 +22,7 @@ public:
     void setPosition( const glm::vec3 & position );
     void setSpeed( float value );
     void setModulation( float value );
+    void setTime( float value );
     
     void draw( int x, int y ){ fbo.draw( x, y, fbo.getWidth()*downsample, fbo.getHeight()*downsample ); }
 

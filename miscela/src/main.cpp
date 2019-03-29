@@ -18,6 +18,7 @@ int main( int argc, char *argv[] ){
                 ofParameter<int> cFrameRate;
                 ofParameter<bool> cShowFrameRate;
                 ofParameter<int> cDownSample;      
+                ofParameter<int> cDoNotResize;      
         config.setName("config");  
         canvas.setName("canvas");
             canvas.add( cWidth.set( "width", 800, 0, 5000) );
@@ -25,6 +26,7 @@ int main( int argc, char *argv[] ){
             canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
             canvas.add( cFrameRate.set( "framerate", 60, 1, 120) );
             canvas.add( cShowFrameRate.set( "show_fps", false) );
+            canvas.add( cDoNotResize.set( "do_not_resize", false) );
         config.add( canvas );
         webcam.setName("webcam");
             webcam.add( webcamW.set("width", 640, 0, 5000) );
@@ -68,6 +70,9 @@ int main( int argc, char *argv[] ){
         mainApp->camH = webcamH;
         mainApp->camMode = webcamMode;
         mainApp->framerate = cFrameRate;
+        mainApp->width = cWidth;
+        mainApp->height = cHeight;
+        mainApp->resizable = !cDoNotResize;
 
         ofSetFrameRate( cFrameRate );
         

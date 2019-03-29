@@ -72,4 +72,7 @@ class ofApp : public ofBaseApp{
         int camW;
         int camH;
         float framerate;
+        int width;
+        int height;
+        bool resizable;
 };

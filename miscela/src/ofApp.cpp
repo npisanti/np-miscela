@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    combo.setup( ofGetWidth(), ofGetHeight(), downsample );
+    combo.setup( width, height, downsample );
     combo.layers.reserve( 12 );
     for( auto & path : paths ){
         combo.add( path );
@@ -62,7 +62,7 @@ void ofApp::setup(){
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
     
-    bResize=true;
+    bResize=false;
     resizeCounter=0;
     
     bSave = false;
@@ -132,10 +132,11 @@ void ofApp::update(){
     combo.update();
     
     if( bSave ){
-        if( saveCounter < saveFrames ){
+        if( saveCounter <= saveFrames ){
             float frametime = ( saveFrames-saveCounter ) / float(saveFrames );
             frametime *= saveFrames / framerate ;
             frametime += float( saveStart );
+            combo.setTime( frametime );
             
             ofPixels pixels;
             combo.fbo.readToPixels( pixels );
@@ -217,14 +218,16 @@ void ofApp::keyPressed(int key){
         case 's':   
             bSave = true;
             saveCounter = saveFrames + saveCountDown;
-            combo.setSpeed( 0.0f );
+            speed = 0.0f;
         break;
     }
 }
 
 void ofApp::windowResized(int w, int h){
-    resizeCounter = 8;
-    bResize = true;
+    if( resizable ){
+        resizeCounter = 8;
+        bResize = true;        
+    }
 }
 
 void ofApp::xyControl( float x, float y, int button ){

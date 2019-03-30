@@ -62,7 +62,7 @@ void ofApp::setup(){
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
     
-    bResize=false;
+    bResize = true;
     resizeCounter=0;
     
     bSave = false;

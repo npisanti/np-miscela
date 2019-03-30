@@ -62,8 +62,9 @@ void ofApp::setup(){
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
     
-    bResize = true;
+    bResize = resizable;
     resizeCounter=0;
+    if( !resizable ){ combo.resize( width, height ); }
     
     bSave = false;
     saveCounter = 0;

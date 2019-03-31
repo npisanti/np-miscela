@@ -14,7 +14,10 @@ public:
     DotFrag(){
         timewarp();
         pingpong();
-        uniform( control, "u_control" );
+        uniform( controlA, "u_control_a" );
+        uniform( controlB, "u_control_b" );
+        uniform( buttonA, "u_button_a" );
+        uniform( buttonB, "u_button_b" );
         uniform( position, "u_position" );
         uniform( colorA, "u_color_a" );
         uniform( colorB, "u_color_b" );

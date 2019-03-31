@@ -16,7 +16,11 @@ public:
     
     void resize( int w, int h );
     
-    void setControl( float value );
+    void setControlA( float value );
+    void setControlB( float value );
+    void setButtonA( bool value );
+    void setButtonB( bool value );
+    
     void setColorA( ofColor color );
     void setColorB( ofColor color );
     void setPosition( const glm::vec3 & position );

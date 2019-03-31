@@ -54,9 +54,27 @@ void np::miscela::Combination::resize( int w, int h ){
     fbo.allocate( settings );
 }
     
-void np::miscela::Combination::setControl( float value ){
+void np::miscela::Combination::setControlA( float value ){
     for( auto & layer : layers ){
-        layer.setControl( value );
+        layer.setControlA( value );
+    }
+}
+    
+void np::miscela::Combination::setControlB( float value ){
+    for( auto & layer : layers ){
+        layer.setControlB( value );
+    }
+}
+    
+void np::miscela::Combination::setButtonA( bool value ){
+    for( auto & layer : layers ){
+        layer.setButtonA( value );
+    }
+}
+    
+void np::miscela::Combination::setButtonB( bool value ){
+    for( auto & layer : layers ){
+        layer.setButtonB( value );
     }
 }
 

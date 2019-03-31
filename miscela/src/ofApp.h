@@ -22,6 +22,7 @@ class ofApp : public ofBaseApp{
         void exit();
 		
 		void keyPressed(int key);
+		void keyReleased(int key);
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
@@ -41,8 +42,11 @@ class ofApp : public ofBaseApp{
         ofxPanel 	gui;
 
         ofParameter<float> speed;
-        std::vector<ofParameter<float>> controls;
-
+        ofParameter<float> controlA;
+        ofParameter<float> controlB;
+        ofParameter<bool> buttonA;
+        ofParameter<bool> buttonB;
+        
         np::PaletteTable palette;
         ofParameter<bool> invertPalette;
         

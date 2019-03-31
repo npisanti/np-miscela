@@ -1,5 +1,6 @@
 
 #include "Layer.h"
+#include "bindings/lvg.h"
 
 np::miscela::Layer::Layer(){
     loaded = false;
@@ -15,6 +16,10 @@ void np::miscela::Layer::load( std::string path ){
         loaded = true;
         frag.load( path );
         mode = 0;
+    }else if( ext == "lua" ){
+        loaded = true;
+        luavg.load( path );
+        mode = 1;
     }else if( ext == "jpg" || ext == "png" 
            || ext == "bmp" || ext == "gif" ){
         loaded = true;
@@ -33,11 +38,16 @@ void np::miscela::Layer::load( std::string path ){
 }
 
 void np::miscela::Layer::render( ofFbo & fbo ){
+    
     if( loaded ){
         
         switch( mode ){
             case 0: // shader
                 frag.apply( fbo );
+            break;
+            
+            case 1: // lua script
+                luavg.render( fbo );
             break;
 
             case 2: // image
@@ -47,12 +57,9 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 ofRectangle imgrect( 0, 0, image.getWidth(), image.getHeight() );
                 imgrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
                 
-                ofPushStyle();
-                ofDisableAlphaBlending();
                 fbo.begin();
                     image.draw( imgrect.x, imgrect.y, imgrect.width, imgrect.height );
                 fbo.end();
-                ofPopStyle();
             }
             break;
             
@@ -64,20 +71,158 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 vidrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
 
                 video.update();
-                
-                ofPushStyle();
-                ofDisableAlphaBlending();
+
                 fbo.begin();
                     ofSetColor(255);
                     video.draw( vidrect.x, vidrect.y, vidrect.width, vidrect.height  );
                 fbo.end();
-                ofPopStyle();
             }
             break;
             
             default: break;
         }
+    }
+}
+
+void np::miscela::Layer::setControlA( float value ){
+    switch( mode ) {
+        case 0: 
+            frag.controlA = value; 
+        break;
         
+        case 1:
+            luavg.variable( "control_a", value );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setControlB( float value ){
+    switch( mode ) {
+        case 0: 
+            frag.controlB = value; 
+        break;
+        
+        case 1:
+            luavg.variable( "control_b", value );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setButtonA( bool value ){
+    switch( mode ) {
+        case 0: 
+            frag.buttonA = value; 
+        break;
+        
+        case 1:
+            luavg.variable( "button_a", value );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setButtonB( bool value ){
+    switch( mode ) {
+        case 0: 
+            frag.buttonB = value; 
+        break;
+        
+        case 1:
+            luavg.variable( "button_b", value );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setColorA( ofColor color ){ 
+    switch( mode ) {
+        case 0: 
+            frag.colorA = color; 
+        break;
+        
+        case 1:
+            lvg::setColorA( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setColorB( ofColor color ){ 
+    switch( mode ) {
+        case 0: 
+            frag.colorB = color; 
+        break;
+        
+        case 1:
+            lvg::setColorB( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setPosition( const glm::vec3 & position ){ 
+    switch( mode ) {
+        case 0: 
+            frag.position = position; 
+        break;
+        
+        case 1:
+            luavg.variable( "position_x", position.x );
+            luavg.variable( "position_y", position.y );
+            luavg.variable( "position_z", position.z );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setSpeed( float value ){ 
+    switch( mode ) {
+        case 0: 
+            frag.speed = value; 
+        break;
+        
+        case 1:
+            luavg.speed = value;
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setModulation( float value ){ 
+    switch( mode ) {
+        case 0: 
+            frag.modulation = value; 
+        break;
+        
+        case 1:
+            luavg.variable( "modulation", value );
+        break;
+        
+        default: break;
+    }
+}
+
+void np::miscela::Layer::setTime( float value ){ 
+    switch( mode ) {
+        case 0: 
+            frag.setTime( value );
+        break;
+        
+        case 1:
+            luavg.playhead( value );
+        break;
+        
+        default: break;
     }
 }
     

@@ -29,11 +29,10 @@ void ofApp::setup(){
 	gui.setup("miscela", "settings.xml", 20, 20 );
     
     gui.add( speed.set( "speed control", 1.0f, 0.0f, 2.0f) );
-    
-    controls.resize( combo.layers.size() );
-    for( size_t i=0; i<controls.size(); ++i ){
-        gui.add( controls[i].set("control "+ ofToString(i), 0.5f, 0.0f, 1.0f ) );
-    }
+    gui.add( controlA.set("control A", 0.5f, 0.0f, 1.0f ) );
+    gui.add( controlB.set("control B", 0.5f, 0.0f, 1.0f ) );
+    gui.add( buttonA.set( "button A", false) );
+    gui.add( buttonB.set( "button B", false) );
     
     gui.add( palette.parameters );
     gui.add( invertPalette.set("invert palette", false) );
@@ -96,6 +95,10 @@ void ofApp::update(){
     combo.setModulation( mod );
     combo.setSpeed( speed );
     combo.setPosition( position );
+    combo.setControlA( controlA );
+    combo.setControlA( controlB );
+    combo.setButtonA( buttonA );
+    combo.setButtonB( buttonB );
     
     if( camID != -1 ){
         if( cam.isInitialized() ){ cam.update(); }
@@ -201,6 +204,11 @@ void ofApp::onUseCamTexture( bool & value ){
 
 void ofApp::keyPressed(int key){
 	switch(key){
+        case ' ':
+            buttonA = true;
+            buttonB = true;
+        break;
+        
 		case 'g': 
         {
             bDrawGui = !bDrawGui;
@@ -224,6 +232,13 @@ void ofApp::keyPressed(int key){
     }
 }
 
+void ofApp::keyReleased(int key){
+    if( key == ' '){
+        buttonA = false;
+        buttonB = false;
+    }
+}
+
 void ofApp::windowResized(int w, int h){
     if( resizable ){
         resizeCounter = 8;
@@ -243,7 +258,8 @@ void ofApp::xyControl( float x, float y, int button ){
             float control = x / ofGetWidth();
             if( control < 0.0f ){ control = 0.0f; }
             if( control > 1.0f ){ control = 1.0f; }
-            combo.setControl( control );
+            controlA = control;
+            controlB = control;
         break;
     }
 }

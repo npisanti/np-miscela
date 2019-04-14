@@ -79,3 +79,12 @@ void np::Analyzer::AudioAnalyzerBand::freqLoChanged(float & pitch) {
 void np::Analyzer::AudioAnalyzerBand::freqHiChanged(float & pitch) {
     hiFreqValue = pdsp::p2f(pitch);    
 }
+
+void np::Analyzer::setBandLowPitch( float value, int band ){
+    bands[band].loPitchControl.getOFParameterFloat() = value;
+}
+
+void np::Analyzer::setBandHighPitch( float value, int band ){
+    bands[band].hiPitchControl.getOFParameterFloat() = value;
+}
+    

@@ -4,8 +4,12 @@
 //========================================================================
 int main( int argc, char *argv[] ){
 
+    std::string home = np::homepath();
+
+
     if( argc>1 ){		
 
+        // ------------- hardcoded defaults -----------------
         ofParameterGroup config;
             ofParameterGroup webcam;
                 ofParameter<int> webcamW;
@@ -18,7 +22,15 @@ int main( int argc, char *argv[] ){
                 ofParameter<int> cFrameRate;
                 ofParameter<bool> cShowFrameRate;
                 ofParameter<int> cDownSample;      
-                ofParameter<int> cDoNotResize;      
+                ofParameter<int> cDoNotResize;  
+            ofParameterGroup colors;
+                ofParameter<ofColor> cColorA;
+                ofParameter<ofColor> cColorB;
+            ofParameterGroup audio;
+                ofParameter<int> aLow;
+                ofParameter<int> aHigh;
+                ofParameter<float> aThreshold;
+                ofParameter<float> aToSpeed;
         config.setName("config");  
         canvas.setName("canvas");
             canvas.add( cWidth.set( "width", 800, 0, 5000) );
@@ -34,7 +46,37 @@ int main( int argc, char *argv[] ){
             webcam.add( webcamID.set("ID", -1, -1, 12) );
             webcam.add( webcamMode.set("mode", 0, 0, 12) );
         config.add( webcam );
+        
+        colors.setName("colors");
+            colors.add( cColorA.set("color A", ofColor(255) ) );
+            colors.add( cColorB.set("color B", ofColor(180) ) );
+        config.add( colors );
+        
+        audio.setName("audio");
+            audio.add( aLow.set("freq low", 100, 20, 20000 ) );
+            audio.add( aHigh.set("freq high", 20000, 20, 20000 ) );
+            audio.add( aThreshold.set("threshold", 0.3f, 0.0f, 1.0f ) );
+            audio.add( aToSpeed.set("to speed", 0.0f, 0.0f, 1.0f ) );
+        config.add( audio );
+        
+        // enable to generate defaults
+        //ofJson json;
+        //ofSerialize( json, config );
+        //ofSavePrettyJson( "defaults.json", json );     
 
+
+        // --------------- user defaults -----------------
+        std::string defaults = np::homepath() + ".config/miscela.json";
+        ofFile file( defaults );
+
+        if( file.exists() ){
+            ofLogNotice() << "loading user defaults...\n";
+            ofJson json = ofLoadJson( defaults );
+            ofDeserialize( json, config );
+        }    
+
+
+        // --------------- file inputs  ------------------
         std::vector<std::string> paths;
  
         for( int i=1; i<argc; ++i ){
@@ -73,6 +115,14 @@ int main( int argc, char *argv[] ){
         mainApp->width = cWidth;
         mainApp->height = cHeight;
         mainApp->resizable = !cDoNotResize;
+        mainApp->colorA = cColorA;
+        mainApp->colorB = cColorB;
+        mainApp->colorA.setName( "color A");
+        mainApp->colorB.setName( "color B");
+        mainApp->freqLow = pdsp::f2p( aLow );
+        mainApp->freqHigh = pdsp::f2p( aHigh );
+        mainApp->audio2speed.set("audio to speed", aToSpeed.get(), 0.0f, 1.0f);
+        mainApp->lowThreshold.set("low threshold", aThreshold.get(), 0.0f, 1.0f);
 
         ofSetFrameRate( cFrameRate );
         

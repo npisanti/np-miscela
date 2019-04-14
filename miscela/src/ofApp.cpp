@@ -23,9 +23,6 @@ void ofApp::setup(){
 
     bResize = false;
     
-    int numPalettes = 2;
-    palette.setup( numPalettes, 2 );
-    
 	gui.setup("miscela", "settings.xml", 20, 20 );
     
     gui.add( speed.set( "speed control", 1.0f, 0.0f, 2.0f) );
@@ -34,19 +31,18 @@ void ofApp::setup(){
     gui.add( buttonA.set( "button A", false) );
     gui.add( buttonB.set( "button B", false) );
     
-    gui.add( palette.parameters );
-    gui.add( invertPalette.set("invert palette", false) );
     gui.add( useCamTexture.set("use cam texture", false) );
 
     analyzer.band( "audio in", 0 );
-    analyzer.setup( 2 ); // audio device id
+    analyzer.setup( 0 ); // audio device id
 
     audioMap.setName("audio mod");
     
     audioMap.add( audioMeter.set("audio in", 0.0f, 0.0f, 1.0f) );
-    audioMap.add( lowThreshold.set("low threshold", 0.0f, 0.0f, 1.0f) );
+    audioMap.add( lowThreshold );
     audioMap.add( highThreshold.set("high threshold", 1.0f, 0.0f, 1.0f) );
     audioMap.add( modMeter.set("mod level", 0.0f, 0.0f, 1.0f) );
+    audioMap.add( audio2speed );
     gui.add( audioMap );
     gui.add( analyzer.parameters );
 
@@ -54,8 +50,11 @@ void ofApp::setup(){
     gui.add( saveCountDown.set("countdown", 0, 0, 60*5 ) );
     gui.add( saveStart.set("start second", 0, 0, 60 ) );
 
+    analyzer.setBandLowPitch( freqLow );
+    analyzer.setBandHighPitch( freqHigh );
+
 	gui.minimizeAll();
-    gui.loadFromFile( "settings.xml" ); 
+    //gui.loadFromFile( "settings.xml" ); 
     bDrawGui = false;
     ofHideCursor();
     
@@ -87,13 +86,10 @@ void ofApp::update(){
 
     mod = ofMap(analyzer.meter(), lowThreshold, highThreshold, 0.0f, 1.0f, true );
     
-    int ca = invertPalette ? 1 : 0; 
-    int cb = invertPalette ? 0 : 1;
-    
-    combo.setColorA( palette.color( ca ) );    
-    combo.setColorB( palette.color( cb ) );    
+    combo.setColorA( colorA );    
+    combo.setColorB( colorB );    
     combo.setModulation( mod );
-    combo.setSpeed( speed );
+    combo.setSpeed( speed + (mod * audio2speed) );
     combo.setPosition( position );
     combo.setControlA( controlA );
     combo.setControlA( controlB );
@@ -206,6 +202,9 @@ void ofApp::keyPressed(int key){
 	switch(key){
         case ' ':
             buttonA = true;
+        break;
+        
+        case OF_KEY_RETURN:
             buttonB = true;
         break;
         
@@ -233,9 +232,15 @@ void ofApp::keyPressed(int key){
 }
 
 void ofApp::keyReleased(int key){
-    if( key == ' '){
-        buttonA = false;
-        buttonB = false;
+	switch(key){
+        case ' ':
+            buttonA = true;
+        break;
+        
+        case OF_KEY_RETURN:
+            buttonB = true;
+        break;
+        
     }
 }
 

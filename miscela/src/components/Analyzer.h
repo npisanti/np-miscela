@@ -15,6 +15,9 @@ public:
     float meter( int band=0 ) const;
     void draw( int x, int y );
     
+    void setBandLowPitch( float value, int band=0 );
+    void setBandHighPitch( float value, int band=0 );
+    
     ofParameterGroup parameters;
     
 private:
@@ -29,7 +32,10 @@ private:
         ofParameterGroup        ui;
 
         float meter() const;
-        
+
+        ofxPDSPValue            loPitchControl;
+        ofxPDSPValue            hiPitchControl;
+                
     private:
         void freqLoChanged(float & pitch);
         void freqHiChanged(float & pitch);
@@ -52,11 +58,9 @@ private:
         ofxPDSPValue     gainControl;            
         
         pdsp::PitchToFreq       p2fLo;
-        ofxPDSPValue            loPitchControl;
         ofParameter<float>      loFreqValue;
 
         pdsp::PitchToFreq       p2fHi;
-        ofxPDSPValue            hiPitchControl;
         ofParameter<float>      hiFreqValue;
         
     };

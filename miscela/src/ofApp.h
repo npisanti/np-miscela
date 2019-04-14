@@ -46,9 +46,9 @@ class ofApp : public ofBaseApp{
         ofParameter<float> controlB;
         ofParameter<bool> buttonA;
         ofParameter<bool> buttonB;
-        
-        np::PaletteTable palette;
-        ofParameter<bool> invertPalette;
+
+        ofParameter<ofColor> colorA;
+        ofParameter<ofColor> colorB;
         
         ofParameter<bool>   useCamTexture;
         void                onUseCamTexture( bool & value );        
@@ -61,13 +61,13 @@ class ofApp : public ofBaseApp{
             ofParameter<float> highThreshold;
             ofParameter<float> audioMeter;
             ofParameter<float> modMeter;
+            ofParameter<float> audio2speed;
             
         bool                bSave;
         ofParameter<int>    saveFrames;
         ofParameter<int>    saveCountDown;
         ofParameter<int>    saveStart;
         int                 saveCounter;
-        
         
         bool bShowFrameRate;
         int downsample;
@@ -79,4 +79,6 @@ class ofApp : public ofBaseApp{
         int width;
         int height;
         bool resizable;
+        float freqLow;
+        float freqHigh;
 };

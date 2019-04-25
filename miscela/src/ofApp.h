@@ -8,7 +8,7 @@
 
 #include "Combination.h"
 
-#include "components/Analyzer.h"
+#include "np-analyzer.h"
 
 #define OVERSAMPLING 0
 

@@ -7,3 +7,4 @@ ofxPDSP
 np-extra
 ofxDotFrag
 np-luavg
+np-analyzer

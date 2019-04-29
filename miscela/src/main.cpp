@@ -4,9 +4,6 @@
 //========================================================================
 int main( int argc, char *argv[] ){
 
-    std::string home = np::homepath();
-
-
     if( argc>1 ){		
 
         // ------------- hardcoded defaults -----------------
@@ -66,7 +63,7 @@ int main( int argc, char *argv[] ){
 
 
         // --------------- user defaults -----------------
-        std::string defaults = np::homepath() + ".config/miscela.json";
+        std::string defaults = ofFilePath::getUserHomeDir() + "/.config/miscela.json";
         ofFile file( defaults );
 
         if( file.exists() ){

@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 #include "DotFrag.h"
-#include "lua/VectorGraphics.h"
+#include "microscript/SandBox.h"
 
 namespace np{ namespace miscela {
 
@@ -45,7 +45,7 @@ private:
     ofImage               image;
     ofVideoPlayer         video;
     
-    np::lua::VectorGraphics luavg;
+    np::microscript::SandBox uscript;
    
     bool loaded;
     

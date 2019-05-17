@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 #include "DotFrag.h"
-#include "microscript/SandBox.h"
+#include "np-microscript.h"
 
 namespace np{ namespace miscela {
 
@@ -45,7 +45,7 @@ private:
     ofImage               image;
     ofVideoPlayer         video;
     
-    np::microscript::SandBox uscript;
+    np::MicroScript uscript;
    
     bool loaded;
     

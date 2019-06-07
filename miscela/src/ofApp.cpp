@@ -95,7 +95,7 @@ void ofApp::update(){
     combo.setSpeed( speed + (mod * audio2speed) );
     combo.setPosition( position );
     combo.setControlA( controlA );
-    combo.setControlA( controlB );
+    combo.setControlB( controlB );
     combo.setButtonA( buttonA );
     combo.setButtonB( buttonB );
     
@@ -237,11 +237,11 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
 	switch(key){
         case ' ':
-            buttonA = true;
+            buttonA = false;
         break;
         
         case OF_KEY_RETURN:
-            buttonB = true;
+            buttonB = false;
         break;
         
     }

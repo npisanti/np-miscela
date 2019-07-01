@@ -1,6 +1,5 @@
 
 #include "Layer.h"
-#include "bindings/us.h"
 
 np::miscela::Layer::Layer(){
     loaded = false;
@@ -145,11 +144,11 @@ void np::miscela::Layer::setColorA( ofColor color ){
         case 0: 
             frag.colorA = color; 
         break;
-        
+        /*
         case 1:
-            us::setColorA( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
+            px::setColorA( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
         break;
-        
+        */
         default: break;
     }
 }
@@ -159,11 +158,11 @@ void np::miscela::Layer::setColorB( ofColor color ){
         case 0: 
             frag.colorB = color; 
         break;
-        
+        /*
         case 1:
-            us::setColorB( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
+            px::setColorB( color.r / 255.0f, color.g / 255.0f, color.b / 255.0f );
         break;
-        
+        */
         default: break;
     }
 }

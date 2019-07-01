@@ -5,5 +5,5 @@ ofxAudioFile
 ofxPDSP
 np-extra
 ofxDotFrag
-np-microscript
+np-pixelscript
 np-analyzer

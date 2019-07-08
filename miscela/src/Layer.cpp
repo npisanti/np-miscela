@@ -189,10 +189,6 @@ void np::miscela::Layer::setSpeed( float value ){
             frag.speed = value; 
         break;
         
-        case 1:
-            uscript.speed = value;
-        break;
-        
         default: break;
     }
 }
@@ -216,11 +212,7 @@ void np::miscela::Layer::setTime( float value ){
         case 0: 
             frag.setTime( value );
         break;
-        
-        case 1:
-            uscript.playhead( value );
-        break;
-        
+
         default: break;
     }
 }

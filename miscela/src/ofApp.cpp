@@ -10,16 +10,13 @@ void ofApp::setup(){
         combo.add( path );
     }
     
-    /*
     std::string title = "miscela : " + ofFilePath::getFileName( paths[0] );             
     for( size_t i=1; i<paths.size(); ++i ){
         title += " >> ";
         title +=  ofFilePath::getFileName( paths[i] );
     }
     ofSetWindowTitle( title );
-    */
-    ofSetWindowTitle( "  " );
-    
+
     //-------------------------------------
     position = glm::vec3( 0.5, 0.5, 0.0 );
     mod = 0.0f;

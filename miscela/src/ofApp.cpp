@@ -10,7 +10,7 @@ void ofApp::setup(){
         combo.add( path );
     }
     
-    std::string title = "miscela : " + ofFilePath::getFileName( paths[0] );             
+    std::string title = ofFilePath::getFileName( paths[0] );             
     for( size_t i=1; i<paths.size(); ++i ){
         title += " >> ";
         title +=  ofFilePath::getFileName( paths[i] );
@@ -18,7 +18,6 @@ void ofApp::setup(){
     ofSetWindowTitle( title );
 
     //-------------------------------------
-    position = glm::vec3( 0.5, 0.5, 0.0 );
     mod = 0.0f;
 
     bResize = false;
@@ -26,8 +25,8 @@ void ofApp::setup(){
 	gui.setup("miscela", "settings.xml", 20, 20 );
     
     gui.add( speed.set( "speed control", 1.0f, 0.0f, 2.0f) );
-    gui.add( controlA.set("control A", 0.5f, 0.0f, 1.0f ) );
-    gui.add( controlB.set("control B", 0.5f, 0.0f, 1.0f ) );
+    gui.add( controlX.set("control X", 0.5f, 0.0f, 1.0f ) );
+    gui.add( controlY.set("control Y", 0.5f, 0.0f, 1.0f ) );
     gui.add( buttonA.set( "button A", false) );
     gui.add( buttonB.set( "button B", false) );
     
@@ -56,6 +55,8 @@ void ofApp::setup(){
 	gui.minimizeAll();
     //gui.loadFromFile( "settings.xml" ); 
     bDrawGui = false;
+    
+    bShowCursor = false;
     ofHideCursor();
     
     useCamTexture.addListener( this, &ofApp::onUseCamTexture );
@@ -84,15 +85,14 @@ void ofApp::update(){
         bResize = false;
     }
 
-    mod = ofMap(analyzer.meter(), lowThreshold, highThreshold, 0.0f, 1.0f, true );
+    //mod = ofMap(analyzer.meter(), lowThreshold, highThreshold, 0.0f, 1.0f, true );
     
     combo.setColorA( colorA );    
     combo.setColorB( colorB );    
     combo.setModulation( mod );
     combo.setSpeed( speed + (mod * audio2speed) );
-    combo.setPosition( position );
-    combo.setControlA( controlA );
-    combo.setControlB( controlB );
+    combo.setControlX( controlX );
+    combo.setControlY( controlY );
     combo.setButtonA( buttonA );
     combo.setButtonB( buttonB );
     
@@ -208,6 +208,15 @@ void ofApp::keyPressed(int key){
             buttonB = true;
         break;
         
+        case 'c':
+            bShowCursor = !bShowCursor;
+            if( bShowCursor ){
+                ofShowCursor();
+            }else{
+                ofHideCursor();
+            }
+        break;
+        
 		case 'g': 
         {
             bDrawGui = !bDrawGui;
@@ -251,32 +260,34 @@ void ofApp::windowResized(int w, int h){
     }
 }
 
-void ofApp::xyControl( float x, float y, int button ){
-    switch( button ){
-        default:
-            position.x = x / float( ofGetWidth() );
-            position.y = y / float( ofGetHeight() );
-            position.z = float( ofGetMousePressed() );        
-        break;
-        
-        case 2:
-            float control = x / ofGetWidth();
-            if( control < 0.0f ){ control = 0.0f; }
-            if( control > 1.0f ){ control = 1.0f; }
-            controlA = control;
-            controlB = control;
-        break;
-    }
+void ofApp::xyControl( float x, float y ){
+    float cx = x / ofGetWidth();
+    float cy = y / ofGetHeight();
+    if( cx < 0.0f ){ cx = 0.0f; }
+    if( cx > 1.0f ){ cx = 1.0f; }
+    if( cy < 0.0f ){ cy = 0.0f; }
+    if( cy > 1.0f ){ cy = 1.0f; }
+    controlX = cx;
+    controlY = cy;
 }
 
 void ofApp::mouseDragged(int x, int y, int button){
-    xyControl( x, y, button );
+    xyControl( x, y );
 }
+
 void ofApp::mousePressed(int x, int y, int button){
-    xyControl( x, y, button );
+    xyControl( x, y );
+    switch( button ){
+        default: buttonA = true; break;
+        case 2:  buttonB = true; break;
+    }
 }
 void ofApp::mouseReleased(int x, int y, int button){
-    xyControl( x, y, button );
+    xyControl( x, y );
+    switch( button ){
+        default: buttonA = false; break;
+        case 2:  buttonB = false; break;
+    }
 }
 
 //--------------------------------------------------------------

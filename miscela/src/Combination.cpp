@@ -53,19 +53,19 @@ void np::miscela::Combination::resize( int w, int h ){
     settings.maxFilter = GL_NEAREST;
     fbo.allocate( settings );
 }
-    
-void np::miscela::Combination::setControlA( float value ){
+
+void np::miscela::Combination::setControlX( float value ){
     for( auto & layer : layers ){
-        layer.setControlA( value );
+        layer.setControlX( value );
     }
 }
     
-void np::miscela::Combination::setControlB( float value ){
+void np::miscela::Combination::setControlY( float value ){
     for( auto & layer : layers ){
-        layer.setControlB( value );
+        layer.setControlY( value );
     }
 }
-    
+
 void np::miscela::Combination::setButtonA( bool value ){
     for( auto & layer : layers ){
         layer.setButtonA( value );
@@ -87,12 +87,6 @@ void np::miscela::Combination::setColorA( ofColor color ){
 void np::miscela::Combination::setColorB( ofColor color ){
     for( auto & layer : layers ){
         layer.setColorB( color );
-    }
-}
-
-void np::miscela::Combination::setPosition( const glm::vec3 & position ){
-    for( auto & layer : layers ){
-        layer.setPosition( position );
     }
 }
 

@@ -83,28 +83,28 @@ void np::miscela::Layer::render( ofFbo & fbo ){
     }
 }
 
-void np::miscela::Layer::setControlA( float value ){
+void np::miscela::Layer::setControlX( float value ){
     switch( mode ) {
         case 0: 
-            frag.controlA = value; 
+            frag.controlX = value; 
         break;
         
         case 1:
-            uscript.variable( "control_a", value );
+            uscript.variable( "control_x", value );
         break;
         
         default: break;
     }
 }
 
-void np::miscela::Layer::setControlB( float value ){
+void np::miscela::Layer::setControlY( float value ){
     switch( mode ) {
         case 0: 
-            frag.controlB = value; 
+            frag.controlY = value; 
         break;
         
         case 1:
-            uscript.variable( "control_b", value );
+            uscript.variable( "control_y", value );
         break;
         
         default: break;
@@ -167,26 +167,15 @@ void np::miscela::Layer::setColorB( ofColor color ){
     }
 }
 
-void np::miscela::Layer::setPosition( const glm::vec3 & position ){ 
-    switch( mode ) {
-        case 0: 
-            frag.position = position; 
-        break;
-        
-        case 1:
-            uscript.variable( "position_x", position.x );
-            uscript.variable( "position_y", position.y );
-            uscript.variable( "position_z", position.z );
-        break;
-        
-        default: break;
-    }
-}
 
 void np::miscela::Layer::setSpeed( float value ){ 
     switch( mode ) {
         case 0: 
             frag.speed = value; 
+        break;
+        
+        case 1: 
+            uscript.speed = value; 
         break;
         
         default: break;

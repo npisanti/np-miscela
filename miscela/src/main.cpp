@@ -67,7 +67,7 @@ int main( int argc, char *argv[] ){
         ofFile file( defaults );
 
         if( file.exists() ){
-            ofLogNotice() << "loading user defaults...\n";
+            ofLogNotice() << "loading user defaults...";
             ofJson json = ofLoadJson( defaults );
             ofDeserialize( json, config );
         }    

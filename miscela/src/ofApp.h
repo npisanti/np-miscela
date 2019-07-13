@@ -28,13 +28,12 @@ class ofApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 
-        void xyControl( float x, float y, int button );
+        void xyControl( float x, float y );
                 
         np::miscela::Combination combo;
         std::vector<std::string> paths;
 
         float mod;
-        glm::vec3 position;
         bool bResize;
         int resizeCounter;
 
@@ -42,8 +41,8 @@ class ofApp : public ofBaseApp{
         ofxPanel 	gui;
 
         ofParameter<float> speed;
-        ofParameter<float> controlA;
-        ofParameter<float> controlB;
+        ofParameter<float> controlX;
+        ofParameter<float> controlY;
         ofParameter<bool> buttonA;
         ofParameter<bool> buttonB;
 
@@ -70,6 +69,7 @@ class ofApp : public ofBaseApp{
         int                 saveCounter;
         
         bool bShowFrameRate;
+        bool bShowCursor;
         int downsample;
         int camMode;
         int camID;

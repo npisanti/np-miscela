@@ -10,12 +10,11 @@ class SandBox{
 public:
     SandBox();
 
-    ofParameter<float> controlA;
-    ofParameter<float> controlB;
+    ofParameter<float> controlX;
+    ofParameter<float> controlY;
     ofParameter<bool> buttonA;
     ofParameter<bool> buttonB;
-    
-    ofParameter<glm::vec3> position;
+
     ofParameter<ofColor> colorA;
     ofParameter<ofColor> colorB;
     ofParameter<float> modulation;

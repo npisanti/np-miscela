@@ -14,11 +14,10 @@ public:
     DotFrag(){
         timewarp();
         pingpong();
-        uniform( controlA, "u_control_a" );
-        uniform( controlB, "u_control_b" );
+        uniform( controlX, "u_control_x" );
+        uniform( controlY, "u_control_y" );
         uniform( buttonA, "u_button_a" );
         uniform( buttonB, "u_button_b" );
-        uniform( position, "u_position" );
         uniform( colorA, "u_color_a" );
         uniform( colorB, "u_color_b" );
         uniform( modulation.set("modulation", 0.0f, 0.0f, 1.0f), "u_modulation" );

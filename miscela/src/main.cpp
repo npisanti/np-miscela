@@ -14,12 +14,15 @@ int main( int argc, char *argv[] ){
                 ofParameter<int> webcamID;
                 ofParameter<int> webcamMode;
             ofParameterGroup canvas;
+                ofParameter<int> cOriginX;
+                ofParameter<int> cOriginY;
                 ofParameter<int> cWidth;
                 ofParameter<int> cHeight;
                 ofParameter<int> cFrameRate;
                 ofParameter<bool> cShowFrameRate;
                 ofParameter<int> cDownSample;      
                 ofParameter<int> cDoNotResize;  
+                ofParameter<bool> cDecorate;
             ofParameterGroup colors;
                 ofParameter<ofColor> cColorA;
                 ofParameter<ofColor> cColorB;
@@ -30,12 +33,15 @@ int main( int argc, char *argv[] ){
                 ofParameter<float> aToSpeed;
         config.setName("config");  
         canvas.setName("canvas");
+            canvas.add( cOriginX.set( "origin_x", -1, 0, 5000) );
+            canvas.add( cOriginY.set( "origin_y", -1, 0, 5000) );
             canvas.add( cWidth.set( "width", 800, 0, 5000) );
             canvas.add( cHeight.set( "height", 480, 0, 5000) );
             canvas.add( cDownSample.set( "downsample", 1, 1, 8) );
             canvas.add( cFrameRate.set( "framerate", 60, 1, 120) );
             canvas.add( cShowFrameRate.set( "show_fps", false) );
             canvas.add( cDoNotResize.set( "do_not_resize", false) );
+            canvas.add( cDecorate.set( "decorate_window", true) );
         config.add( canvas );
         webcam.setName("webcam");
             webcam.add( webcamW.set("width", 640, 0, 5000) );
@@ -96,8 +102,11 @@ int main( int argc, char *argv[] ){
         ofGLFWWindowSettings settings;
         settings.resizable = true;
 #endif
-
-        settings.setSize( cWidth, cHeight );        
+        if( cOriginX != -1 && cOriginY != -1 ){
+            settings.setPosition( glm::vec2( cOriginX, cOriginY ) );   
+        }
+        settings.setSize( cWidth, cHeight );     
+        settings.decorated = cDecorate;   
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
         shared_ptr<ofApp> mainApp(new ofApp);

@@ -4,8 +4,6 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 
-#include "np-extra.h"
-
 #include "Combination.h"
 
 #include "np-analyzer.h"

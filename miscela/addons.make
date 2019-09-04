@@ -3,7 +3,6 @@ ofxMidi
 ofxOsc
 ofxAudioFile
 ofxPDSP
-np-extra
 ofxDotFrag
 np-pixelscript
 np-analyzer

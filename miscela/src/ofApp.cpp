@@ -33,7 +33,7 @@ void ofApp::setup(){
     gui.add( useCamTexture.set("use cam texture", false) );
 
     analyzer.band( "audio in", 0 );
-    analyzer.setup( 0 ); // audio device id
+    analyzer.setup( 5 ); // audio device id
 
     audioMap.setName("audio mod");
     

@@ -8,6 +8,16 @@ np::miscela::Layer::Layer(){
     height = 0;
 }
 
+std::string _getAbsolute( const std::string & path ){
+    std::string filename = ofFilePath::getFileName( path ); 
+
+    if( ! ofFilePath::isAbsolute( path )){
+        std::string filepath = ofFilePath::getCurrentWorkingDirectory() + "/" + path;
+        return filepath;
+    }
+    return path;
+}
+
 void np::miscela::Layer::load( std::string path ){
     std::string ext = ofFilePath::getFileExt( path );
     
@@ -21,10 +31,12 @@ void np::miscela::Layer::load( std::string path ){
         mode = 1;
     }else if( ext == "jpg" || ext == "png" 
            || ext == "bmp" || ext == "gif" ){
+        path = _getAbsolute( path );
         loaded = true;
         image.load( path );
         mode = 2;
     }else if( ext == "mov" || ext == "mp4" ){
+        path = _getAbsolute( path );
         loaded = true;
         video.load( path );
         video.setLoopState(OF_LOOP_NORMAL);
@@ -54,7 +66,8 @@ void np::miscela::Layer::render( ofFbo & fbo ){
                 ofSetColor(255);
                 ofRectangle fborect( 0, 0, fbo.getWidth(), fbo.getHeight() );
                 ofRectangle imgrect( 0, 0, image.getWidth(), image.getHeight() );
-                imgrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
+                //imgrect.scaleTo( fborect, OF_ASPECT_RATIO_KEEP );
+                imgrect.alignTo( fborect );
                 
                 fbo.begin();
                     image.draw( imgrect.x, imgrect.y, imgrect.width, imgrect.height );

@@ -78,7 +78,6 @@ int main( int argc, char *argv[] ){
             ofDeserialize( json, config );
         }    
 
-
         // --------------- file inputs  ------------------
         std::vector<std::string> paths;
  
@@ -88,6 +87,9 @@ int main( int argc, char *argv[] ){
             std::string ext = ofFilePath::getFileExt( path );
             
             if( ext == "json" ){
+                if( ! ofFilePath::isAbsolute( path )){
+                    path = ofFilePath::getCurrentWorkingDirectory() + "/" + path;
+                }
                 ofJson json = ofLoadJson( path );
                 ofDeserialize( json, config );
             }else{
